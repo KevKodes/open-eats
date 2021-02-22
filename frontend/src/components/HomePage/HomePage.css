@@ -1,0 +1,31 @@
+.home-header {
+    background-image: linear-gradient(90deg, rgba(47,45,65,.7), rgba(47,45,65,.7)), url(//cdn.otstatic.com/cfe/6/images/25161502-fbb7de.jpg);
+    background-position: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 26rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home-title {
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0 16px;
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.home-res-form {
+    position: center;
+
+}
