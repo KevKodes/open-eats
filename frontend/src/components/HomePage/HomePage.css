@@ -4,7 +4,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: 26rem;
-    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -25,7 +24,22 @@
     line-height: 56px;
 }
 
-.home-res-form {
-    position: center;
+.home-body {
+    padding: 0 32px 32px;
+    max-width: 80rem;
+    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
 
+.restaurant-row {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    margin-top: 48px;
+}
+
+.carousel-header {
+    border-bottom: 0.0625rem solid #d8d9db;
+    padding-bottom: 16px;
+    margin: 0 0 16px;
 }

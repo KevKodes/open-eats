@@ -17,7 +17,6 @@ body {
     cursor: pointer;
     border-color: #b8222d;
     border-width: 0;
-    width: 100%;
 }
 
 .red-button:hover {

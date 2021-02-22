@@ -66,7 +66,7 @@ const SearchForm = () => {
         onChange={e => setSearchString(e.target.value)}
         placeholder="Restaurant or Cuisine"
       ></input>
-      <button type="submit">Let's go</button>
+      <button className="red-button" type="submit">Let's go</button>
     </form>
   )
 }

@@ -1,0 +1,27 @@
+.footer {
+  background-color: #333;
+  color: #acacac;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-name {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #fff;
+  border-bottom: 1px solid #acacac;
+  padding-bottom: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  /* display: inline-block; */
+  align-items: center;
+}
+
+.fab {
+  color: #acacac;
+  margin: 10px;
+}
