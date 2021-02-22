@@ -10,10 +10,10 @@ export default function Footer() {
       </p>
       <div className="footer-links">
         <a href="https://github.com/KevKodes">
-          <i class="fab fa-github fa-3x"></i>
+          <i className="fab fa-github fa-3x"></i>
         </a>
         <a href="https://www.linkedin.com/in/kevin-pitzer/">
-          <i class="fab fa-linkedin fa-3x"></i>
+          <i className="fab fa-linkedin fa-3x"></i>
         </a>
       </div>
     </div>

@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import NotificationsButton from './NotificationsButton';
+import ReservationsButton from './ReservationsButton';
+import SearchButton from './SearchButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
@@ -11,7 +14,11 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <div className="user-buttons">
+                <ProfileButton user={sessionUser} />
+                <ReservationsButton />
+                <NotificationsButton />
+            </div>
         );
     } else {
         sessionLinks = (
@@ -26,8 +33,16 @@ function Navigation({ isLoaded }) {
     return (
         <ul>
             <li>
-                <NavLink exact to="/">Home</NavLink>
+                <NavLink exact to="/">
+                    <i className="fab fa-erlang"></i>
+                </NavLink>
+            </li>
+            <li>
                 {isLoaded && sessionLinks}
+
+            </li>
+            <li>
+                <SearchButton />
             </li>
         </ul>
     );
