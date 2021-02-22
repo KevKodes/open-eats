@@ -1,1 +1,25 @@
 /* TODO Add site wide styles */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+}
+
+.red-button {
+    background-color: #da3743;
+    color: #fff;
+    font-weight: 500;
+    padding: .875rem 1.75rem .9375rem;
+    border-radius: 3px;
+    display: inline-block;
+    text-align: center;
+    outline: 0;
+    transition: background-color 300ms ease-out;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    border-color: #b8222d;
+    border-width: 0;
+    width: 100%;
+}
+
+.red-button:hover {
+    background-color: #b8222d;
+}
