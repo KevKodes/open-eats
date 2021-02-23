@@ -4,7 +4,7 @@ export default function ReservationsButton() {
 
 
   return (
-    <div className="search-button">
+    <div className="res-button">
       <i className="far fa-calendar-check"></i>
     </div>
   )

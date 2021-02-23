@@ -4,7 +4,7 @@ import './SearchComponent.css';
 const SearchComponent = () => {
   const today = new Date();
 
-  const [resDate, setResDate] = useState("today");
+  const [resDate, setResDate] = useState("Mar 1, 2021");
   const [resTime, setResTime] = useState("7:00 pm")
   const [partySize, setPartySize] = useState('2 people');
   const [searchString, setSearchString] = useState('');
@@ -89,7 +89,7 @@ const SearchComponent = () => {
             placeholder="Restaurant or Cuisine"
           ></input>
         </div>
-        <button className="red-button" type="submit">Let's go</button>
+        <button className="search-button" type="submit">Let's go</button>
       </form>
     </div>
   )

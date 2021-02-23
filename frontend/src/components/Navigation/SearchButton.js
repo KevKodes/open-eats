@@ -4,7 +4,7 @@ export default function SearchButton() {
 
 
   return (
-    <div className="search-button">
+    <div className="search-image">
       <i className="fas fa-search"></i>
     </div>
   )

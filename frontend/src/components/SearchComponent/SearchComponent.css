@@ -71,6 +71,8 @@
 /* TIME */
 .time-section {
   width: 150px;
+  background-color: white;
+  border: 1px solid #e4e3e3;
 }
 
 
@@ -78,7 +80,24 @@
 /* PARTY */
 .party-section {
   width: 150px;
+  background-color: white;
+  border: 1px solid #e4e3e3;
 }
 
 
 /* SEARCH */
+.search-section {
+  width: 290px;
+  background-color: white;
+  border: 1px solid #e4e3e3;
+}
+
+.search-button {
+  width: 145px;
+  height: 50px;
+  color: #fff;
+  background-color: #da3743;
+  cursor: pointer;
+  border-color: #b8222d;
+  border-width: 0;
+}
