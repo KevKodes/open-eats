@@ -2,9 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('Reservations', [
-        
-      ], {});
+      return queryInterface.bulkInsert('Reservations', [], {});
   },
 
   down: (queryInterface, Sequelize) => {
