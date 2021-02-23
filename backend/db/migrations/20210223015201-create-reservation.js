@@ -14,7 +14,7 @@ module.exports = {
       },
       reservationDate: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       reservationTime: {
         allowNull: false,
