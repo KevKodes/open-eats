@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
+const restaurantsRouter = require('./restaurants');
 
 router.use('/session', sessionRouter);
-
+router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
 
 router.get('/hello/world', function (req, res) {
