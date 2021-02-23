@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.header-info {
+    align-items: center;
+}
+
 .home-title {
     font-weight: 700;
     color: #fff;
@@ -39,7 +43,19 @@
 }
 
 .carousel-header {
+    box-sizing: border-box;
     border-bottom: 0.0625rem solid #d8d9db;
     padding-bottom: 16px;
     margin: 0 0 16px;
+}
+
+.carousel-header h2 {
+    margin: 0 0 4px;
+}
+
+.carousel {
+    height: 266px;
+    display: flex;
+    overflow-x: scroll;
+    width: auto;
 }

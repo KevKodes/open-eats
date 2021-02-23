@@ -31,7 +31,7 @@ const SearchForm = () => {
 
   return (
     <form
-      className="home-res-form"
+      className="home-search-form"
       onSubmit={handleSubmit}
     >
       <input

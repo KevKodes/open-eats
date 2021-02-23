@@ -1,0 +1,79 @@
+.full-card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d8d9db;
+  border-radius: 4px;
+  width: 236px;
+  position: relative;
+  box-sizing: border-box;
+  animation: 0.8s ease-in-out;
+  transition: all 0.3s;
+  margin-right: 8px;
+  margin-left: 8px;
+  text-decoration: none;
+  color: #2d333f;
+}
+
+.card-image img {
+  width: 100%;
+  height: 132px;
+  border-style: none;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+}
+
+.card-info {
+  padding: 8px;
+}
+
+.card-info p {
+  margin: 0;
+}
+
+.card-info h3 {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  margin: 0 0 4px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-stars {
+  margin-right: 8px;
+  color: #da3743;
+}
+
+.reviews p {
+  margin: 0 0 4px;
+  font-size: 0.875rem;
+}
+
+.extra-info {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.extra-info p {
+  margin-right: 4px;
+  font-weight: 250;
+}
+
+.cuisine::after {
+  content: " \00b7";
+}
+
+.bookings {
+  display: flex;
+  flex-direction: row;
+}
+
+.bookings p {
+  margin-left: 4px;
+  font-size: 14px;
+}

@@ -17,24 +17,25 @@ export default function HomePage() {
 	const restaurantList = useSelector(state => {
 		return state.restaurants.list
 	})
-	console.log('Home page component restaurant list: ', restaurantList)
 
 	return (
 		<>
 			<header className="home-header">
-				<h1 className="home-title">
-						Find your table for any occasion
-				</h1>
-				<SearchForm />
+				<div className="header-info">
+					<h1 className="home-title">
+							Find your table for any occasion
+					</h1>
+					<SearchForm />
+				</div>
 			</header>
 			<div className="home-body">
 				<div className="restaurant-row">
 					<div className="carousel-header">
-					<h2>Available for reservation now</h2>
+						<h2>Available for reservation now</h2>
 					</div>
 					<div className="carousel">
-						{restaurantList.length && restaurantList.map(rest => (
-							<ResaurantCard restaurant={rest} />
+						{restaurantList.length && restaurantList.map((rest, idx) => (
+							<ResaurantCard key={idx} restaurant={rest} />
 						))}
 					</div>
 				</div>
