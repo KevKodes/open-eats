@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 
 const SearchForm = () => {
   const today = new Date();
-  console.log(today)
+
   const [resDate, setResDate] = useState("today");
   const [resTime, setResTime] = useState("7:00 pm")
   const [partySize, setPartySize] = useState('2 people');
