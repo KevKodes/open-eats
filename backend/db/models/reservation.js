@@ -1,16 +1,32 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Reservation = sequelize.define('Reservation', {
-    partySize: DataTypes.INTEGER,
-    reservationDate: DataTypes.DATE,
-    reservationTime: DataTypes.TIME,
-    userId: DataTypes.INTEGER,
-    restaurantId: DataTypes.INTEGER,
-    occasion: DataTypes.STRING,
-    request: DataTypes.STRING
+    partySize: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    reservationDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    reservationTime: {
+      type: DataTypes.TIME,
+      allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    restaurantId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    occasion: DataTypes.STRING(255),
+    request: DataTypes.STRING(255)
   }, {});
   Reservation.associate = function(models) {
-    // associations can be defined here
+    Reservation.belongsTo(models.User, { foreignKey: 'userId' });
+    Reservation.belongsTo(models.Restaurant, { foreignKey: 'restaurantId' });
   };
   return Reservation;
 };
