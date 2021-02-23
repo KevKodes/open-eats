@@ -26,8 +26,8 @@ const SearchComponent = () => {
       resDate,
       partySize
     }
-    // this is the home page form so it will do a search but have the details of the form saved
-
+    // it will do a search but have the details of the form saved
+    console.log(reservation);
   }
 
   return (
@@ -39,38 +39,56 @@ const SearchComponent = () => {
         className="search-form"
         onSubmit={handleSubmit}
       >
-        <input
-          className="date-selector"
-          type="dropdown"
-          value={resDate}
-          onChange={e => setResDate(e.target.value)}
-        />
-        <select
-          className="time-selector"
-          value={resTime}
-          onChange={e => setResTime(e.target.value)}
-        >
-          {timeOptions.map((time, idx) => (
-            <option key={idx} value={time}>{time}</option>
-          ))}
-        </select>
-        <select
-          className="party-selector"
-          value={partySize}
-          onChange={e => setPartySize(e.target.value)}
-        >
-          {partySizeOptions.map((size, idx) => (
-            <option key={idx} value={size}>
-              {size}
-            </option>
-          ))}
-        </select>
-        <input
-          className="search-bar"
-          value={searchString}
-          onChange={e => setSearchString(e.target.value)}
-          placeholder="Restaurant or Cuisine"
-        ></input>
+        <div className="search-form-left">
+          <div className="date-section">
+            <i className="far fa-calendar fa-2x"></i>
+            <div
+              className="date-selector"
+              type="dropdown"
+              value={resDate}
+              onChange={e => setResDate(e.target.value)}
+            >{resDate}</div>
+            <i className="fas fa-chevron-down"></i>
+            <div className="calendar-hidden">
+
+            </div>
+          </div>
+          <div className="time-section">
+
+            <select
+              className="time-selector"
+              value={resTime}
+              onChange={e => setResTime(e.target.value)}
+            >
+              {timeOptions.map((time, idx) => (
+                <option key={idx} value={time}>{time}</option>
+              ))}
+            </select>
+          </div>
+          <div className="party-section">
+
+            <select
+              className="party-selector"
+              value={partySize}
+              onChange={e => setPartySize(e.target.value)}
+            >
+              {partySizeOptions.map((size, idx) => (
+                <option key={idx} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="search-section">
+
+          <input
+            className="search-bar"
+            value={searchString}
+            onChange={e => setSearchString(e.target.value)}
+            placeholder="Restaurant or Cuisine"
+          ></input>
+        </div>
         <button className="red-button" type="submit">Let's go</button>
       </form>
     </div>
