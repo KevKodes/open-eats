@@ -1,3 +1,15 @@
 .fa-erlang {
     color: #da3743;
 }
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+}
+
+.user-buttons {
+    display: flex;
+}
