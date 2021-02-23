@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SearchForm from '../SearchForm';
+import SearchComponent from '../SearchComponent';
 import Footer from '../Footer';
 import ResaurantCard from './RestaurantCard';
 import { getRestaurants } from '../../store/restaurants';
@@ -21,12 +21,7 @@ export default function HomePage() {
 	return (
 		<>
 			<header className="home-header">
-				<div className="header-info">
-					<h1 className="home-title">
-							Find your table for any occasion
-					</h1>
-					<SearchForm />
-				</div>
+				<SearchComponent />
 			</header>
 			<div className="home-body">
 				<div className="restaurant-row">
