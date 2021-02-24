@@ -8,7 +8,7 @@ import photoReducer from "./photos";
 const rootReducer = combineReducers({
   session: sessionReducer,
   restaurants: restaurantReducer,
-  // photos: photoReducer,
+  photos: photoReducer,
 });
 
 let enhancer;

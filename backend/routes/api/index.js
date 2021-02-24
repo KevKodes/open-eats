@@ -7,7 +7,7 @@ const photosRouter = require('./photos');
 router.use('/session', sessionRouter);
 router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
-// router.use('/photos', photosRouter)
+router.use('/photos', photosRouter)
 
 router.get('/hello/world', function (req, res) {
     res.cookie('XSRF-TOKEN', req.csrfToken());

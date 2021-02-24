@@ -17,12 +17,12 @@ export const getPhotos = (restId) => async (dispatch) => {
   }
 }
 
-//Photos Reducer
-// const initialState = {
-//   photoList: []
-// }
+// Photos Reducer
+const initialState = {
+  photoList: []
+}
 
-const photoReducer = (state, action) => {
+const photoReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD: {
       const restPhotos = [];

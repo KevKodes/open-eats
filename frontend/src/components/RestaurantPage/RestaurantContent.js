@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { getPhotos } from '../../store/photos'
+import { getPhotos } from '../../store/photos'
 
 import './RestaurantContent.css'
 
@@ -8,9 +8,9 @@ export default function RestaurantContent({ restaurant }) {
   const restId = restaurant.id;
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getPhotos(restId));
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getPhotos(restId));
+  }, [dispatch])
 
   return (
     <div className="restContent-body">
