@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getPhotos } from '../../store/photos'
+import { useDispatch, useSelector } from 'react-redux';
+import { getPhotos } from '../../store/photos';
+import PhotoComponent from './PhotoComponent';
 
 import './RestaurantContent.css'
 
@@ -11,6 +12,10 @@ export default function RestaurantContent({ restaurant }) {
   useEffect(() => {
     dispatch(getPhotos(restId));
   }, [dispatch])
+
+  const photoList = useSelector(state => {
+    return state.photos.photoList;
+  })
 
   return (
     <div className="restContent-body">
@@ -30,7 +35,9 @@ export default function RestaurantContent({ restaurant }) {
         {restaurant.description}
       </div>
       <div className="resContent-photos">
-        
+        {photoList.length && photoList.map((photo, idx) => (
+          <PhotoComponent photo={photo} key={idx} />
+        ))}
       </div>
     </div>
   )
