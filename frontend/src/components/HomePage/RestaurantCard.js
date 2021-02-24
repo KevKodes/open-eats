@@ -3,7 +3,7 @@ import './RestaurantCard.css'
 
 export default function RestaurantCard({ restaurant }) {
   const { id, name, mainImageUrl, cuisineType, city } = restaurant;
-  const numReviews = Math.floor(Math.random() * 100);
+  const numReviews = Math.floor(Math.random() * 100 + 10);
   const numBookings = Math.floor(Math.random() * 30)
 
   return (
