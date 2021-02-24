@@ -13,3 +13,7 @@ li {
 .user-buttons {
     display: flex;
 }
+
+.signin-button {
+    background-color: green;
+}

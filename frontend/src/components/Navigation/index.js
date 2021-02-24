@@ -6,6 +6,7 @@ import NotificationsButton from './NotificationsButton';
 import ReservationsButton from './ReservationsButton';
 import SearchButton from './SearchButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -24,8 +25,9 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 {/* <NavLink to="/login">Log In</NavLink> */}
+                {/* <NavLink to="/signup">Sign Up</NavLink> */}
+                <SignupFormModal />
                 <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
             </>
         );
     }
@@ -35,6 +37,7 @@ function Navigation({ isLoaded }) {
             <li>
                 <NavLink exact to="/">
                     <i className="fab fa-erlang"></i>
+                    <h2 className="nav-title">OpenEats</h2>
                 </NavLink>
             </li>
             <li>
