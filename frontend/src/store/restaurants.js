@@ -1,12 +1,18 @@
 
 // action types
 const LOAD = 'restaurants/LOAD';
+const GET_ONE = 'restaurants/GET_ONE'
 
 
 // action creators
 const load = restaurantList => ({
   type: LOAD,
   restaurantList
+})
+
+const getOne = restaurant => ({
+  type: GET_ONE,
+  restaurant
 })
 
 
@@ -17,6 +23,15 @@ export const getRestaurants = () => async (dispatch) => {
   if (response.ok) {
     const restaurantList = await response.json();
     dispatch(load(restaurantList));
+  }
+}
+
+export const getOneRestaurant = (id) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${id}`)
+
+  if (res.ok) {
+    const restaurant = await res.json();
+    dispatch(getOne(restaurant))
   }
 }
 
@@ -37,6 +52,13 @@ const restaurantReducer = (state = initialState, action) => {
         // ...allRestaurants,
         ...state,
         list: allRestaurants
+      }
+    }
+    case GET_ONE: {
+      const oneRestaurant = [action.restaurant];
+      return {
+        ...state,
+        list: oneRestaurant
       }
     }
     default:

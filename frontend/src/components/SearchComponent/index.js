@@ -54,7 +54,7 @@ const SearchComponent = () => {
             </div>
           </div>
           <div className="time-section">
-            <i class="far fa-clock"></i>
+            <i className="far fa-clock"></i>
             <select
               className="time-selector"
               value={resTime}

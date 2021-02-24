@@ -11,4 +11,10 @@ router.get('/', asyncHandler(async (req, res) => {
   return res.json(restaurants);
 }))
 
+//get a single restaurant for the individual restaurant details page
+router.get('/:id', asyncHandler(async (req, res) => {
+  const restaurant = await Restaurant.findByPk(req.params.id);
+  return res.json(restaurant);
+}))
+
 module.exports = router;
