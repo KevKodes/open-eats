@@ -34,7 +34,7 @@ function Navigation({ isLoaded }) {
 		<div className="nav-bar">
 			<div className="nav-left">
 				<NavLink className="home-links" exact to="/">
-						<i className="fab fa-erlang"></i>
+						<i className="fab fa-erlang fa-2x"></i>
 						<h2 className="nav-title">OpenEats</h2>
 				</NavLink>
 			</div>
@@ -42,7 +42,7 @@ function Navigation({ isLoaded }) {
 				<div className="session-buttons">
 					{isLoaded && sessionLinks}
 				</div>
-				<div className="search-button">
+				<div className="nav-search">
 					<SearchButton />
 				</div>
 			</div>
