@@ -41,20 +41,20 @@ const SearchComponent = () => {
       >
         <div className="search-form-left">
           <div className="date-section">
-            <i className="far fa-calendar fa-2x"></i>
+            <i className="far fa-calendar"></i>
             <div
               className="date-selector"
               type="dropdown"
               value={resDate}
               onChange={e => setResDate(e.target.value)}
             >{resDate}</div>
-            <i className="fas fa-chevron-down"></i>
+            <i className="fas fa-angle-down"></i>
             <div className="calendar-hidden">
 
             </div>
           </div>
           <div className="time-section">
-
+            <i class="far fa-clock"></i>
             <select
               className="time-selector"
               value={resTime}
@@ -66,7 +66,7 @@ const SearchComponent = () => {
             </select>
           </div>
           <div className="party-section">
-
+            <i className="far fa-user"></i>
             <select
               className="party-selector"
               value={partySize}
@@ -81,7 +81,7 @@ const SearchComponent = () => {
           </div>
         </div>
         <div className="search-section">
-
+          <i className="fas fa-search"></i>
           <input
             className="search-bar"
             value={searchString}
