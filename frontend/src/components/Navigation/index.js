@@ -10,45 +10,44 @@ import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
-    const sessionUser = useSelector(state => state.session.user);
+	const sessionUser = useSelector(state => state.session.user);
 
-    let sessionLinks;
-    if (sessionUser) {
-        sessionLinks = (
-            <div className="user-buttons">
-                <ProfileButton user={sessionUser} />
-                <ReservationsButton />
-                <NotificationsButton />
-            </div>
-        );
-    } else {
-        sessionLinks = (
-            <>
-                {/* <NavLink to="/login">Log In</NavLink> */}
-                {/* <NavLink to="/signup">Sign Up</NavLink> */}
-                <SignupFormModal />
-                <LoginFormModal />
-            </>
-        );
-    }
+	let sessionLinks;
+	if (sessionUser) {
+		sessionLinks = (
+			<div className="user-buttons">
+				<ProfileButton user={sessionUser} />
+				<ReservationsButton />
+				<NotificationsButton />
+			</div>
+		);
+	} else {
+		sessionLinks = (
+			<>
+			<SignupFormModal />
+			<LoginFormModal />
+			</>
+		);
+	}
 
-    return (
-        <ul>
-            <li>
-                <NavLink exact to="/">
-                    <i className="fab fa-erlang"></i>
-                    <h2 className="nav-title">OpenEats</h2>
-                </NavLink>
-            </li>
-            <li>
-                {isLoaded && sessionLinks}
-
-            </li>
-            <li>
-                <SearchButton />
-            </li>
-        </ul>
-    );
+	return (
+		<div className="nav-bar">
+			<div className="nav-left">
+				<NavLink className="home-links" exact to="/">
+						<i className="fab fa-erlang"></i>
+						<h2 className="nav-title">OpenEats</h2>
+				</NavLink>
+			</div>
+			<div className="nav-right">
+				<div className="session-buttons">
+					{isLoaded && sessionLinks}
+				</div>
+				<div className="search-button">
+					<SearchButton />
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Navigation;

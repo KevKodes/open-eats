@@ -1,13 +1,27 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* LEFT */
+.nav-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-links {
+    display: flex;
+    flex-direction: row;
+}
+
 .fa-erlang {
     color: #da3743;
 }
 
-ul {
+/* RIGHT */
+.nav-right {
     display: flex;
-}
-
-li {
-    list-style-type: none;
+    flex-direction: row;
 }
 
 .user-buttons {
@@ -15,5 +29,17 @@ li {
 }
 
 .signin-button {
-    background-color: green;
+    color: #2d333f;
+    background-color: transparent;
+    border: .0625rem solid #d8d9db;
+    font-size: 14px;
+    margin: 0;
+}
+
+.signup-button {
+    color: #fff;
+    background-color: #247f9e;
+    font-size: 14px;
+    margin: 0 8px;
+    border: .0625rem solid #247f9e;
 }
