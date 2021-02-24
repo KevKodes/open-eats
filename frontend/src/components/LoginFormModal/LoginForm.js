@@ -20,6 +20,13 @@ function LoginForm() {
     );
   };
 
+  const demoLogin = () => {
+    return dispatch(sessionActions.login({
+      credential: 'demo@user.io',
+      password: 'password'
+    }))
+  }
+
   return (
     <div className="modal-form">
       <h1 className="form-header">Please sign in</h1>
@@ -46,13 +53,14 @@ function LoginForm() {
             placeholder="Password"
             required
           />
-          <button className="red-button" type="submit">Sign In</button>
+          <button className="account-button" type="submit">Sign In</button>
         </form>
+        <button className="demo-button" onClick={demoLogin}>Demo user</button>
       </div>
-      <p className="form-footer">
+      {/* <p className="form-footer">
         New to OpenEats?
         <a>Create an account</a>
-      </p>
+      </p> */}
     </div>
   );
 }
