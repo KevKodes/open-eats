@@ -1,3 +1,7 @@
+.res-block {
+  box-shadow: 0 2px 8px rgb(153 153 153 / 40%);
+}
+
 .res-form {
   top: 0px;
   z-index: 0;
