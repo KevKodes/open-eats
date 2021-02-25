@@ -41,5 +41,14 @@
 }
 
 .reservation-form {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.extra-info {
+  display: flex;
+  flex-direction: column;
   position: relative;
 }

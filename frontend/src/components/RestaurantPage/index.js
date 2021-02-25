@@ -56,20 +56,17 @@ export default function RestaurantPage() {
             <div className="info-phone">
               {restaurant.phone}
             </div>
-            {/* <div className="info-hours">
-              <div class="">
+              <div className="info-hours">
+                <div className="hours">
                 <i className="far fa-clock"></i>
                   <span>Hours of operation</span>
                   <div>Mon–Thu 12:00 pm–9:00 pm
-                    <br>Saturday
-                    <br>Sat 11:00 am–10:00 pm
-                    <br>Sunday
-                    <br>Sun 11:00 am–9:00 pm
-                    <br>Friday
-                    <br>Fri 12:00 pm–10:00 pm
+                    <br/>Saturday 11:00 am–10:00 pm
+                    <br/>Sunday 11:00 am–9:00 pm
+                    <br/>Friday 12:00 pm–10:00 pm
                   </div>
                 </div>
-              </div> */}
+              </div>
           </div>
         </div>
       </div>
