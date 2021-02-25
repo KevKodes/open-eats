@@ -53,8 +53,6 @@ function ProfileButton({ user }) {
                         <div id="profile-dropdown-signout" onClick={signout}>
                             Sign out
                         </div>
-                        
-
                     </div>
                 </div>
             )}

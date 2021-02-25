@@ -4,6 +4,10 @@ import './ReservationForm.css'
 export default function ReservationForm({ restaurant }) {
   const numBookings = Math.floor(Math.random() * 30)
 
+  const reservationHandler = () => {
+    
+  }
+
   return (
     <div className="res-block">
       <h2 className="res-form-title">
@@ -46,7 +50,11 @@ export default function ReservationForm({ restaurant }) {
             </select>
           </div>
         </div>
-        <button className='res-form-button'>Find a table</button>
+        <button 
+          className='res-form-button'
+          type="submit"
+          onSubmit={reservationHandler}
+        >Find a table</button>
       </form>
       <div className="bookings">
         <i className="fas fa-chart-line"></i>
