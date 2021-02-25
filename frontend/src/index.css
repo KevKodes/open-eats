@@ -2,6 +2,7 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #f7f7f7;
+    scroll-behavior: smooth;
 }
 
 #root {

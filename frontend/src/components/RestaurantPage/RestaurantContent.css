@@ -20,10 +20,10 @@
   border-bottom: 1px solid #d8d9db;
   display: flex;
   align-items: center;
-  text-decoration: none;
 }
 
 .resContent-header a {
+  text-decoration: none;
   padding: 14px;
   display: inline-block;
   color: #2d333f;
