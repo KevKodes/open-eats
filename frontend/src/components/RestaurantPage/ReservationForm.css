@@ -59,6 +59,13 @@
   padding: 5px 0 0;
 }
 
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    width: 100%;
+}
+
 .bottom-input {
   width: 140px;
   box-sizing: content-box;

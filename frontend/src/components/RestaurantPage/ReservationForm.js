@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 import './ReservationForm.css'
 
 export default function ReservationForm({ restaurant }) {
   const numBookings = Math.floor(Math.random() * 30)
+  const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
+  const [partySize, setPartySize] = useState(0);
+  const [reservationDate, setReservationDate] = useState(new Date());
+  const [reservationTime, setReservationTime] = useState('');
 
   const reservationHandler = () => {
-    
+
   }
 
   return (
@@ -26,7 +35,8 @@ export default function ReservationForm({ restaurant }) {
         <div className="form-bottom">
           <div className="bottom-input">
             <p>Date</p>
-            <input type="date" value="2021-02-24" />
+            {/* <input type="date" value="2021-02-24" /> */}
+            <DatePicker selected={reservationDate} onChange={date => setReservationDate(date)} />
           </div>
           <div className="bottom-input">
             <p>Time</p>
