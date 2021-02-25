@@ -18,8 +18,8 @@ export default function RestaurantContent({ restaurant }) {
   })
 
   return (
-    <div className="restContent-body">
-      <div className="restContent-header">
+    <div className="resContent-body">
+      <div className="resContent-header">
         <a>Overview</a>
         <a>Photos</a>
         <a>Menu</a>

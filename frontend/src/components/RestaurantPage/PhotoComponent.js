@@ -1,4 +1,4 @@
-
+import './PhotoComponent.css';
 
 export default function PhotoComponent({ photo }) {
 

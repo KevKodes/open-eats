@@ -1,0 +1,43 @@
+
+.restaurant-body {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-rows: 288px 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: 
+  "image image"
+  "content sidebar";
+}
+
+.restaurant-header {
+  grid-area: image;
+  position: relative;
+  height: 288px;
+  width: 100%;
+  overflow-y: hidden;
+  border: 1px solid blue
+}
+
+.restaurant-header img {
+  width: 100%;
+}
+
+.save-restaurant {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+}
+
+.main-content {
+  grid-area: content;
+  border: 1px solid green
+}
+
+.sidebar {
+  position: relative;
+  grid-area: sidebar;
+  margin-left: 16px;
+  max-width: 320px;
+  border: 1px solid red;
+}

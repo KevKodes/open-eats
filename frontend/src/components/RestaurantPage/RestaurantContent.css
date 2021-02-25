@@ -1,3 +1,6 @@
-body {
-  color: gray;
+.resContent-body {
+  margin-right: 16px;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
 }

@@ -20,15 +20,13 @@ export default function RestaurantPage() {
     return state.restaurants.list
   })
 
-  console.log('restaurant in page component: ', restaurantList)
-
   return (
-    <>
+    <div className='na'>
     {restaurantList.length && restaurantList.map((restaurant, idx) => (
       <div key={idx} className="restaurant-body">
         <div className="restaurant-header">
           <img src={restaurant.mainImageUrl} />
-          <div className="add-restaurant">
+          <div className="save-restaurant">
             <i className="far fa-bookmark"></i>
             <button>Save this restaurant</button>
           </div>
@@ -41,14 +39,19 @@ export default function RestaurantPage() {
             <ReservationForm restaurant={restaurant} />
           </div>
           <div className="extra-info">
-
+            <div className="info-address">
+              {restaurant.address}
+            </div>
+            <div className="info-phone">
+              {restaurant.phone}
+            </div>
           </div>
         </div>
         <div className="reviews">
-
+          <p>add a reviews component in index.js</p>
         </div>
       </div>
       ))}
-    </>
+    </div>
   )
 }
