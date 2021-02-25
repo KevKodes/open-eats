@@ -3,4 +3,52 @@
   max-width: 640px;
   display: flex;
   flex-direction: column;
+  float: right;
+  padding: 0 8px;
+  background-color: white;
+  position: relative;
+  top: -48px;
+  z-index: 0;
+  color: #2d333f
+}
+
+.resContent-header {
+  height: 48px;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  border-bottom: 1px solid #d8d9db;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.resContent-header a {
+  padding: 14px;
+  display: inline-block;
+  color: #2d333f;
+}
+
+.resContent-header a:hover {
+  cursor: pointer;
+  color: #da3743;
+  border-bottom: 2px solid rgb(218, 55, 67);
+}
+
+.resContent-name {
+  border-bottom: 1px solid #d8d9db;
+  font-size: 48px;
+  padding: 2rem;
+  margin: 1rem;
+  line-height: 56px;
+  font-weight: 700;
+}
+
+.resContent-description {
+  border-bottom: 1px solid #d8d9db;
+}
+
+.resContent-photos {
+  display: flex;
+  flex-direction: column;
 }

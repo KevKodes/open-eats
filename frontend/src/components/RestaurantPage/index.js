@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getOneRestaurant } from '../../store/restaurants';
 import ReservationForm from './ReservationForm';
 import RestaurantContent from './RestaurantContent';
-
+import Reviews from './Reviews';
 import './RestaurantPage.css';
 
 export default function RestaurantPage() {
@@ -46,9 +46,6 @@ export default function RestaurantPage() {
               {restaurant.phone}
             </div>
           </div>
-        </div>
-        <div className="reviews">
-          <p>add a reviews component in index.js</p>
         </div>
       </div>
       ))}
