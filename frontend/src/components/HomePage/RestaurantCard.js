@@ -23,7 +23,7 @@ export default function RestaurantCard({ restaurant }) {
           </div>
           <p>{`${numReviews} reviews`}</p>
         </div>
-        <div className="extra-info">
+        <div className="card-extra-info">
           <p className="cuisine">{cuisineType}</p>
           <p>{city}</p>
         </div>

@@ -27,6 +27,13 @@
   padding: 8px;
 }
 
+.card-info h3 {
+  white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}
+
 .card-info p {
   margin: 0;
 }
@@ -52,14 +59,14 @@
   font-size: 0.875rem;
 }
 
-.extra-info {
+.card-extra-info {
   display: flex;
   flex-direction: row;
   margin: 0 0 8px;
   font-size: 14px;
 }
 
-.extra-info p {
+.card-extra-info p {
   margin-right: 4px;
   font-weight: 250;
 }
