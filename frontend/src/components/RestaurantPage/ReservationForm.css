@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 8px rgb(153 153 153 / 40%);
-  padding: 0 8px;
+  padding: 0 16px;
   position: sticky;
   top: 0;
   z-index: 0;
@@ -31,7 +31,87 @@
   justify-content: center;
 }
 
+.form-top p,
+.bottom-input p {
+  margin-bottom: 3px;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.form-top select {
+  width: 100%;
+  height: 33px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  box-sizing: content-box;
+  margin-bottom: 2px;
+}
+
+.form-top select:hover {
+  border-bottom: 2px solid rgba(218, 55, 67, 1);
+  margin-bottom: 1px;
+}
+
 .form-bottom {
   display: flex;
   flex-direction: row;
+  margin: 7px 0 0;
+  padding: 5px 0 0;
+}
+
+.bottom-input {
+  width: 140px;
+  box-sizing: content-box;
+  margin-bottom: 2px;
+}
+
+.bottom-input:hover {
+  border-bottom: 2px solid rgba(218, 55, 67, 1);
+  margin-bottom: 1px;
+}
+
+.bottom-input input,
+.bottom-input select {
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  width: 100%;
+  height: 33px;
+}
+
+.res-form-button {
+  background-color: #da3743;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: .875rem 1.75rem .9375rem;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  transition: background-color 300ms ease-out;
+  cursor: pointer;
+  border-color: #b8222d;
+  border-width: 0;
+  width: 100%;
+  margin: 1.2rem 0;
+}
+
+.res-form-button:hover {
+  background-color: #b8222d;
+  color: #fff;
+}
+
+.bookings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bookings .fas {
+  margin-right: 4px;
+}
+
+.bookings p {
+  margin-left: 4px;
+  font-size: 14px;
 }

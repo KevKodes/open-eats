@@ -23,6 +23,8 @@ export default function ReservationForm({ restaurant }) {
           <div className="bottom-input">
             <p>Date</p>
             <input type="date" value="2021-02-24" />
+          </div>
+          <div className="bottom-input">
             <p>Time</p>
             <select>
               <option value="8">8:00 AM</option>
@@ -44,7 +46,7 @@ export default function ReservationForm({ restaurant }) {
             </select>
           </div>
         </div>
-        <button>Find a table</button>
+        <button className='res-form-button'>Find a table</button>
       </form>
       <div className="bookings">
         <i className="fas fa-chart-line"></i>

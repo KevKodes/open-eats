@@ -33,6 +33,7 @@
   cursor: pointer;
   color: #da3743;
   border-bottom: 2px solid rgb(218, 55, 67);
+  padding-bottom: 13px;
 }
 
 .resContent-name {
