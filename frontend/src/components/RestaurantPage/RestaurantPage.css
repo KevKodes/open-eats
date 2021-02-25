@@ -15,7 +15,6 @@
   height: 288px;
   width: 100%;
   overflow-y: hidden;
-  border: 1px solid blue
 }
 
 .restaurant-header img {
@@ -31,7 +30,6 @@
 
 .main-content {
   grid-area: content;
-  border: 1px solid green
 }
 
 .sidebar {
@@ -39,5 +37,9 @@
   grid-area: sidebar;
   margin-left: 16px;
   max-width: 320px;
-  border: 1px solid red;
+  top: -48px;
+}
+
+.reservation-form {
+  position: relative;
 }
