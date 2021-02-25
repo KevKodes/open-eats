@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
 			<div className="user-buttons">
 				<ProfileButton user={sessionUser} />
 				<ReservationsButton />
-				<NotificationsButton />
+				{/* <NotificationsButton /> */}
 			</div>
 		);
 	} else {
