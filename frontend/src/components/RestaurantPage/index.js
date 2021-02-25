@@ -50,6 +50,7 @@ export default function RestaurantPage() {
                   <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
                 </div>
               </div> */}
+              <i className="fas fa-map-marker-alt"></i>
               {restaurant.address}
             </div>
             <div className="info-phone">

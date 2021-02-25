@@ -39,9 +39,11 @@ export default function RestaurantContent({ restaurant }) {
       </div>
       <div className="resContent-photos">
         <h2>{`${numPhotos} Photos`}</h2>
-        {photoList.length && photoList.map((photo, idx) => (
-          <PhotoComponent photo={photo} key={idx} />
-        ))}
+        <div className="resContent-photolist">
+          {photoList.length && photoList.map((photo, idx) => (
+            <PhotoComponent photo={photo} key={idx} />
+            ))}
+        </div>
       </div>
       <div className="reviews">
         <Reviews />
