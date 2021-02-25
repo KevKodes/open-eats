@@ -31,6 +31,7 @@ export default function RestaurantContent({ restaurant }) {
         {restaurant.name}
       </div>
       <div className="resContent-info">
+        <i className="fas fa-utensils"></i>
         {restaurant.cuisineType}
       </div>
       <div className="resContent-description">

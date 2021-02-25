@@ -44,8 +44,14 @@
   font-weight: 700;
 }
 
+.resContent-info {
+  margin: 1rem 0;
+}
+
 .resContent-description {
   border-bottom: 1px solid #d8d9db;
+  margin: 1rem 0;
+  padding: 1rem 0;
 }
 
 .resContent-photos {
