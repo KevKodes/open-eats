@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { createReservation } from '../../store/reservations'
+import { postReservation } from '../../store/reservations'
 
 import './BookPage.css';
 
@@ -16,6 +16,7 @@ const BookPage = () => {
   const userId = sessionUser?.id;
 
   const occasionList = [
+    "Select an occasion (optional)",
     "Birthday",
     "Anniversary",
     "Date Night",
@@ -24,7 +25,7 @@ const BookPage = () => {
   ]
 
   // States set by the form
-  const [occasion, setOccasion] = useState('');
+  let [occasion, setOccasion] = useState('');
   const [request, setRequest] = useState('');
 
   // section to parse the date object and format it
@@ -65,20 +66,22 @@ const BookPage = () => {
   //Handle the reservation
   const bookHandler = async (e) => {
     e.preventDefault();
+    if (occasion === "Select an occasion (optional)") occasion = "";
     // handle errors if there is a missing field
 
     const finalReservation = {
       partySize,
-      reservationDate,
+      reservationDate: formattedDate,
       reservationTime,
       restaurantId,
       userId,
       occasion,
       request
     }
+    
     // dispatch reservation to the backend
-    const confirmedReservation = await dispatch()
-    console.log(confirmedReservation)
+    const confirmedReservation = await dispatch(postReservation(finalReservation));
+    console.log('confirmedReservation: ', confirmedReservation)
     // send user to their reservations page or render a confirmation
 
   }
@@ -127,7 +130,6 @@ const BookPage = () => {
         <div className="book-form-bottom">
           <select
             value={occasion}
-            placeholder="Select an occasion (optional)"
             onChange={e => setOccasion(e.target.value)}>
             {occasionList.map((occ, idx) => (
               <option key={idx} value={occ}>{occ}</option>
@@ -136,7 +138,7 @@ const BookPage = () => {
           <textarea 
             placeholder="Add a special request (optional)"
             onChange={e => setRequest(e.target.value)}
-            value="request"
+            value={request}
           />
         </div>
         <button className="book-form-button" type="submit">Complete reservation</button>

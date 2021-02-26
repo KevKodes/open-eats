@@ -3,11 +3,13 @@ const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const restaurantsRouter = require('./restaurants');
 const photosRouter = require('./photos');
+const reservationsRouter = require('./reservations');
 
 router.use('/session', sessionRouter);
 router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
-router.use('/photos', photosRouter)
+router.use('/photos', photosRouter);
+router.use('/reservations', reservationsRouter);
 
 router.get('/hello/world', function (req, res) {
     res.cookie('XSRF-TOKEN', req.csrfToken());

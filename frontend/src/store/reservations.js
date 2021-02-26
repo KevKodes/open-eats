@@ -13,7 +13,7 @@ const post = reservation => ({
 
 //thunks
 export const postReservation = reservation => async (dispatch) => {
-  const res = await csrfFetch(`/api/restaurants`, {
+  const res = await csrfFetch(`/api/reservations`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -23,13 +23,14 @@ export const postReservation = reservation => async (dispatch) => {
 
   if (res.ok) {
     const setReservation = await res.json();
+    console.log('returned in thunk: ', setReservation)
     dispatch(post(setReservation))
   }
 }
 
 // Reducer
 const initialState = {
-  resList: []
+  reservationList: []
 }
 
 const reservationsReducer = (state = initialState, action) => {
