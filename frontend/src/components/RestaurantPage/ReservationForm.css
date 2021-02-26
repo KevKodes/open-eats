@@ -6,7 +6,7 @@
   padding: 0 16px;
   position: sticky;
   top: 0;
-  z-index: 0;
+  z-index: 2;
   color: #2d333f;
   background-color: white;
 }
@@ -69,6 +69,10 @@
 
 .react-datepicker__day--selected {
   background-color: #da3743;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(218, 55, 67, 0.2);
 }
 
 .bottom-input {

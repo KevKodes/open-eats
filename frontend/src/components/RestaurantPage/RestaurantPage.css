@@ -26,6 +26,19 @@
   top: 20px;
   right: 20px;
   background-color: white;
+  border-radius: 3px;
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.save-restaurant i {
+  margin-right: 4px;
+}
+
+.save-restaurant:hover {
+  cursor: pointer;
+  background-color: #da3743;
+  color: white;
 }
 
 .main-content {
@@ -44,7 +57,7 @@
   position: sticky;
   top: 0;
   background-color: white;
-  /* z-index: 1; */
+  z-index: 1;
 }
 
 .extra-info {

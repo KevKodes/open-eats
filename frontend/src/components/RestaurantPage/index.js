@@ -20,15 +20,23 @@ export default function RestaurantPage() {
     return state.restaurants.list
   })
 
+  //handler for saving restaurant to favorites
+  const saveHandler = e => {
+    console.log('add save functionality')
+  }
+
   return (
     <div className='na'>
     {restaurantList.length && restaurantList.map((restaurant, idx) => (
       <div key={idx} className="restaurant-body">
         <div className="restaurant-header">
           <img src={restaurant.mainImageUrl} />
-          <div className="save-restaurant">
+          <div 
+          className="save-restaurant"
+          onClick={saveHandler}
+          >
             <i className="far fa-bookmark"></i>
-            <button>Save this restaurant</button>
+            <span>Save this restaurant</span>
           </div>
         </div>
         <div className="main-content">
