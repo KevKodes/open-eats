@@ -72,7 +72,10 @@ export default function ReservationForm({ restaurant }) {
     if (userId) {
       history.push({
         pathname: "/book",
-        state: { reservation: initialReservation }
+        state: { 
+          reservation: initialReservation,
+          restaurant
+        }
       })
     } else {
       setErrors(['Please login to make a reservation'])

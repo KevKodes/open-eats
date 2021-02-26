@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
@@ -7,9 +7,15 @@ import './BookPage.css';
 const BookPage = () => {
   const location = useLocation();
   const baseReservation = location.state.reservation;
+  const restaurant = location.state.restaurant;
   const sessionUser = useSelector(state => state.session.user)
   const { reservationDate, partySize, reservationTime } = baseReservation;
-  const restaurant = useSelector(state => state.restaurants.list[0])
+  const restaurantId = restaurant?.id;
+  const userId = sessionUser?.id;
+
+  // States set by the form
+  const [occasion, setOccasion] = useState('');
+  const [request, setRequest] = useState('');
 
   // section to parse the date object and format it
   const dayNum = reservationDate.getDay();
@@ -48,11 +54,15 @@ const BookPage = () => {
 
   //Handle the reservation
   const bookHandler = () => {
+    // handle errors if there is a missing field
     const finalReservation = {
       partySize,
       reservationDate,
       reservationTime,
-      
+      restaurantId,
+      userId,
+      occasion,
+      request
     }
   }
   
