@@ -45,7 +45,6 @@ const TIMES = [
 const PARTYSIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 export default function ReservationForm({ restaurant }) {
-  const numBookings = Math.floor(Math.random() * 30)
   const sessionUser = useSelector(state => state.session.user);
   const userId = sessionUser?.id;
   const restaurantId = restaurant.id;
@@ -53,7 +52,13 @@ export default function ReservationForm({ restaurant }) {
   const [reservationDate, setReservationDate] = useState(new Date());
   const [reservationTime, setReservationTime] = useState('7:00 pm');
   const [errors, setErrors] = useState([]);
+  const [numBookings, setNumBookings] = useState(10);
   const history = useHistory();
+  
+  useEffect(() => {
+    const randomNum = Math.floor(Math.random() * 30)
+    setNumBookings(randomNum)
+  },[])
 
   useEffect(() => {
     setErrors([]);
