@@ -105,23 +105,24 @@ export default function ReservationForm({ restaurant }) {
           </select>
         </div>
         <div className="form-bottom">
-          <div className="bottom-input">
-            <p>Date</p>
-            <DatePicker 
-              selected={reservationDate} 
-              onChange={date => setReservationDate(date)}
-            />
-          </div>
-          <div className="bottom-input">
-            <p>Time</p>
-            <select 
-            value={reservationTime}
-            onChange={e => setReservationTime(e.target.value)}>
-              {TIMES.map(time => (
-                <option key={time} value={time}>{time}</option>
-              ))}
-            </select>
-          </div>
+          
+            <div className="bottom-input-date">
+              <p>Date</p>
+              <DatePicker 
+                selected={reservationDate} 
+                onChange={date => setReservationDate(date)}
+              />
+            </div>          
+            <div className="bottom-input-time">
+              <p>Time</p>
+              <select 
+              value={reservationTime}
+              onChange={e => setReservationTime(e.target.value)}>
+                {TIMES.map(time => (
+                  <option key={time} value={time}>{time}</option>
+                ))}
+              </select>
+            </div>
         </div>
         <ul className='res-form-errors'>
           {errors.map((error, idx) => (

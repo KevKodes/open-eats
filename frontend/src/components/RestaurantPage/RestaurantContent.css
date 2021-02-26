@@ -47,6 +47,36 @@
 
 .resContent-info {
   margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.resContent-cuisine {
+  display: flex;
+  flex-direction: row;
+}
+
+.resContent-reviews {
+  display: flex;
+  flex-direction: row;
+  padding-right: 8px;
+  margin: 0 16px;
+}
+
+.resContent-cuisine i,
+.resContent-reviews p,
+.resContent-reviews .fa-comment-alt {
+  padding-right: 8px;
+}
+
+.resContent-review-stars {
+  margin-right: 8px;
+  color: #da3743;
+}
+
+.resContent-reviews p {
+  margin: 0 0 4px;
+  font-size: 0.875rem;
 }
 
 .resContent-description {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPhotos } from '../../store/photos';
 import PhotoComponent from './PhotoComponent';
@@ -8,6 +8,12 @@ import './RestaurantContent.css'
 export default function RestaurantContent({ restaurant }) {
   const restId = restaurant.id;
   const dispatch = useDispatch();
+  const [numReviews, setNumReviews] = useState(20)
+
+  useEffect(() => {
+    const randomNum = Math.floor(Math.random() * 30)
+    setNumReviews(randomNum)
+  }, [])
 
   useEffect(() => {
     dispatch(getPhotos(restId));
@@ -47,8 +53,21 @@ export default function RestaurantContent({ restaurant }) {
         {restaurant.name}
       </div>
       <div className="resContent-info">
-        <i className="fas fa-utensils"></i>
-        {restaurant.cuisineType}
+        <div className="resContent-reviews">
+          <div className="resContent-review-stars">
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star"></i>
+            <i className="fas fa-star-half-alt"></i>
+            <i className="far fa-star"></i>
+          </div>
+          <i className="far fa-comment-alt"></i>
+          <p>{`${numReviews} reviews`}</p>
+        </div>
+        <div className="resContent-cuisine">
+          <i className="fas fa-utensils"></i>
+          {restaurant.cuisineType}
+        </div>
       </div>
       <div className="resContent-description">
         {restaurant.description}

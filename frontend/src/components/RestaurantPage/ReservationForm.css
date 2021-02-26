@@ -75,21 +75,31 @@
   background-color: rgba(218, 55, 67, 0.2);
 }
 
-.bottom-input {
+.bottom-input-date,
+.bottom-input-time {
   width: 140px;
   box-sizing: content-box;
   margin-bottom: 2px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-.bottom-input:hover {
+.bottom-input-date {
+  margin-right: 4px;
+}
+
+.bottom-input-time {
+  margin-left: 4px;
+}
+
+.bottom-input-date:hover,
+.bottom-input-time:hover {
   border-bottom: 2px solid rgba(218, 55, 67, 1);
   margin-bottom: 1px;
 }
 
-.bottom-input input,
-.bottom-input select {
+.bottom-input-time select,
+.bottom-input-date input {
   border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
   width: 100%;
   height: 35px;
 }
