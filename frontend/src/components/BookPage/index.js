@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { createReservation } from '../../store/reservations'
 
 import './BookPage.css';
 
 const BookPage = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
   const baseReservation = location.state.reservation;
   const restaurant = location.state.restaurant;
   const sessionUser = useSelector(state => state.session.user)
@@ -61,8 +63,10 @@ const BookPage = () => {
   const displayDate = `${outputDay}, ${dispMonth} ${resDate}`; // Fri, Feb 26
 
   //Handle the reservation
-  const bookHandler = () => {
+  const bookHandler = async (e) => {
+    e.preventDefault();
     // handle errors if there is a missing field
+
     const finalReservation = {
       partySize,
       reservationDate,
@@ -72,11 +76,12 @@ const BookPage = () => {
       occasion,
       request
     }
+    // dispatch reservation to the backend
+    const confirmedReservation = await dispatch()
+    console.log(confirmedReservation)
+    // send user to their reservations page or render a confirmation
+
   }
-  
-  // need to add some logic to make sure there is a user and restaurant so the page
-  //   does not break. Particularly on refresh
-  //   also maybe store the info to localstorage?
 
   return (
     <>
