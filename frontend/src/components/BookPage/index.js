@@ -81,21 +81,70 @@ const BookPage = () => {
     }
 
     // dispatch reservation to the backend
-    await dispatch(postReservation(finalReservation));
-    // send user to their reservations page or render a confirmation
-    
+    await dispatch(postReservation(finalReservation));    
   }
-  
-  useEffect(() => {
-    
-    console.log('confirmedReservation: ', confirmedRes)
 
-  }, [confirmedRes])
+  // alter the content based on confirmation status
+  let headerContent = null;
+  let bottomContent = null;
+  if (confirmedRes) {
+    headerContent = (
+      <h2>Success!</h2>
+    )
+    bottomContent = (
+      <div className="book-hide-form">
+        <div className="hide-form-name">
+          {`Reservation name: ${sessionUser.firstName} ${sessionUser.lastName}`}
+        </div>
+        <div className="hide-form-email">
+          {`Contact email: ${sessionUser.email}`}
+        </div>
+      </div>
+    )
+  } else {
+    headerContent = (
+      <h2>You're almost done!</h2>
+    )
+    bottomContent = (
+      <div className="book-show-form">
+        <span>Diner details</span>
+        <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
+        <form className="book-res-form" onSubmit={bookHandler}>
+          <div className="book-form-top">
+            <input 
+              className="book-phone"
+              placeholder="Phone number"
+              />
+            <input 
+              className="book-email"
+              value={sessionUser.email}
+              readOnly
+            />
+          </div>
+          <div className="book-form-bottom">
+            <select
+              value={occasion}
+              onChange={e => setOccasion(e.target.value)}>
+              {occasionList.map((occ, idx) => (
+                <option key={idx} value={occ}>{occ}</option>
+              ))}
+            </select>
+            <textarea 
+              placeholder="Add a special request (optional)"
+              onChange={e => setRequest(e.target.value)}
+              value={request}
+            />
+          </div>
+          <button className="book-form-button" type="submit">Complete reservation</button>
+        </form>
+      </div>
+    )
+  }
 
   return (
     <>
       <div className="book-header">
-        <h2>You're almost done!</h2>
+        {headerContent}
         <div className="book-header-photo">
           <img src={restaurant?.mainImageUrl} />
         </div>
@@ -119,36 +168,7 @@ const BookPage = () => {
           </div>
         </div>
       </div>
-      <span>Diner details</span>
-      <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
-      <form className="book-res-form" onSubmit={bookHandler}>
-        <div className="book-form-top">
-          <input 
-            className="book-phone"
-            placeholder="Phone number"
-            />
-          <input 
-            className="book-email"
-            value={sessionUser.email}
-            readOnly
-          />
-        </div>
-        <div className="book-form-bottom">
-          <select
-            value={occasion}
-            onChange={e => setOccasion(e.target.value)}>
-            {occasionList.map((occ, idx) => (
-              <option key={idx} value={occ}>{occ}</option>
-            ))}
-          </select>
-          <textarea 
-            placeholder="Add a special request (optional)"
-            onChange={e => setRequest(e.target.value)}
-            value={request}
-          />
-        </div>
-        <button className="book-form-button" type="submit">Complete reservation</button>
-      </form>
+      {bottomContent}
     </>
   )
 }
