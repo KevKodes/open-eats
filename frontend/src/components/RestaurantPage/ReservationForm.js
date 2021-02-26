@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -52,6 +52,7 @@ export default function ReservationForm({ restaurant }) {
   const [partySize, setPartySize] = useState(2);
   const [reservationDate, setReservationDate] = useState(new Date());
   const [reservationTime, setReservationTime] = useState('7:00 pm');
+  const history = useHistory();
 
   const reservationHandler = e => {
     e.preventDefault();
@@ -65,11 +66,19 @@ export default function ReservationForm({ restaurant }) {
     console.log(initialReservation);
     //redirect to the reservation page with the initial reservation 
     // need to give the opportunity for occasion and request
-    return <Redirect to={{
-        pathname: "/book",
-        state: { reservation: initialReservation }
-      }}
-    />
+    // return <Redirect to={{
+    //     pathname: "/book",
+    //     state: { reservation: initialReservation }
+    //   }}
+    // />
+    // if (userId) {
+      
+    // }
+
+    history.push({
+      pathname: "/book",
+      state: { reservation: initialReservation }
+    })
   }
 
   return (
