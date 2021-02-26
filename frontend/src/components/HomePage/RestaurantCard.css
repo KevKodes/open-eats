@@ -29,9 +29,9 @@
 
 .card-info h3 {
   white-space: nowrap;
-    overflow: hidden;
-    display: block;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
 }
 
 .card-info p {

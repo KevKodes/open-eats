@@ -1,20 +1,75 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import './ReservationForm.css'
 
+//opportunity to update times based on the current time
+const TIMES = [
+  "8:00 AM",
+  "8:30 AM",
+  "9:00 AM",
+  "9:30 AM",
+  "10:00 AM",
+  "10:30 AM",
+  "11:00 AM",
+  "11:30 AM", 
+  "12:00 PM",
+  "12:30 PM",
+  "1:00 PM",
+  "1:30 PM",
+  "2:00 PM",
+  "2:30 PM",
+  "3:00 PM",
+  "3:30 PM",
+  "4:00 PM",
+  "4:30 PM",
+  "5:00 PM",
+  "5:30 PM",
+  "6:00 PM",
+  "6:30 PM",
+  "7:00 PM",
+  "7:30 PM",
+  "8:00 PM",
+  "8:30 PM",
+  "9:00 PM",
+  "9:30 PM",
+  "10:00 PM",
+  "10:30 PM",
+  "11:00 PM",
+  "11:30 PM",
+];
+
+const PARTYSIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
 export default function ReservationForm({ restaurant }) {
   const numBookings = Math.floor(Math.random() * 30)
-  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [partySize, setPartySize] = useState(0);
+  const userId = sessionUser.id;
+  const restaurantId = restaurant.id;
+  const [partySize, setPartySize] = useState(2);
   const [reservationDate, setReservationDate] = useState(new Date());
-  const [reservationTime, setReservationTime] = useState('');
+  const [reservationTime, setReservationTime] = useState('7:00 pm');
 
-  const reservationHandler = () => {
-
+  const reservationHandler = e => {
+    e.preventDefault();
+    const initialReservation = {
+      partySize,
+      reservationDate,
+      reservationTime,
+      userId,
+      restaurantId
+    }
+    console.log(initialReservation);
+    //redirect to the reservation page with the initial reservation 
+    // need to give the opportunity for occasion and request
+    return <Redirect to={{
+        pathname: "/book",
+        state: { reservation: initialReservation }
+      }}
+    />
   }
 
   return (
@@ -22,14 +77,15 @@ export default function ReservationForm({ restaurant }) {
       <h2 className="res-form-title">
         Make a reservation
       </h2>
-      <form className="res-form">
+      <form className="res-form" onSubmit={reservationHandler}>
         <div className="form-top">
           <p>Party Size</p>
-          <select>
-            <option value="2">2 people</option>
-            <option value="3">3 people</option>
-            <option value="4">4 people</option>
-            <option value="5">5 people</option>
+          <select
+            value={partySize}
+            onChange={e => setPartySize(e.target.value)}>
+            {PARTYSIZES.map(num => (
+              <option key={num} value={num}>{`For ${num}`}</option>
+            ))}
           </select>
         </div>
         <div className="form-bottom">
@@ -42,30 +98,18 @@ export default function ReservationForm({ restaurant }) {
           </div>
           <div className="bottom-input">
             <p>Time</p>
-            <select>
-              <option value="8">8:00 AM</option>
-              <option value="9">9:00 AM</option>
-              <option value="10">10:00 AM</option>
-              <option value="11">11:00 AM</option>
-              <option value="12">12:00 PM</option>
-              <option value="13">1:00 PM</option>
-              <option value="14">2:00 PM</option>
-              <option value="15">3:00 PM</option>
-              <option value="16">4:00 PM</option>
-              <option value="17">5:00 PM</option>
-              <option value="18">6:00 PM</option>
-              <option value="19">7:00 PM</option>
-              <option value="20" selected="">8:00 PM</option>
-              <option value="21">9:00 PM</option>
-              <option value="22">10:00 PM</option>
-              <option value="23">11:00 PM</option>
+            <select 
+            value={reservationTime}
+            onChange={e => setReservationTime(e.target.value)}>
+              {TIMES.map(time => (
+                <option key={time} value={time}>{time}</option>
+              ))}
             </select>
           </div>
         </div>
         <button 
           className='res-form-button'
           type="submit"
-          onSubmit={reservationHandler}
         >Find a table</button>
       </form>
       <div className="bookings">
