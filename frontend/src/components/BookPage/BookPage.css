@@ -1,0 +1,39 @@
+.book-main {
+  max-width: 636px;
+  margin: 32px 64px;
+  margin-bottom: 80px;
+  color: #2d333f;
+}
+
+.book-header {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.book-header-photo {
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.book-header-photo img {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+}
+
+.book-name {
+  font-size: 24px;
+  line-height: 28px;
+  margin: 0 0 4px;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: row;
+}

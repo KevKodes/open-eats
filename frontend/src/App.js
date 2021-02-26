@@ -6,6 +6,7 @@ import RestaurantPage from './components/RestaurantPage';
 import BookPage from './components/BookPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

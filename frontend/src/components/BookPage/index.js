@@ -142,9 +142,9 @@ const BookPage = () => {
   }
 
   return (
-    <>
+    <div className="book-main">
+      {headerContent}
       <div className="book-header">
-        {headerContent}
         <div className="book-header-photo">
           <img src={restaurant?.mainImageUrl} />
         </div>
@@ -169,7 +169,7 @@ const BookPage = () => {
         </div>
       </div>
       {bottomContent}
-    </>
+    </div>
   )
 }
 
