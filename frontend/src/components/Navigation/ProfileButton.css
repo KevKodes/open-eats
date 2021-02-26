@@ -15,6 +15,7 @@
   width: 236px;
   border: .0625rem solid #d8d9db;
   border-radius: 4px;
+  z-index: 5;
 }
 
 .profile-dropdown-top {

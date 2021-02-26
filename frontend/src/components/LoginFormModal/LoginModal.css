@@ -82,3 +82,9 @@
 .demo-button:hover {
     background-color: rgba(218, 55, 67, 0.2);
 }
+
+/* Errors */
+.modal-form li {
+    list-style: none;
+    color: red;
+}

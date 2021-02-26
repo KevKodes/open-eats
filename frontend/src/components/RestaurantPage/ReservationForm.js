@@ -35,8 +35,10 @@ export default function ReservationForm({ restaurant }) {
         <div className="form-bottom">
           <div className="bottom-input">
             <p>Date</p>
-            {/* <input type="date" value="2021-02-24" /> */}
-            <DatePicker selected={reservationDate} onChange={date => setReservationDate(date)} />
+            <DatePicker 
+              selected={reservationDate} 
+              onChange={date => setReservationDate(date)}
+            />
           </div>
           <div className="bottom-input">
             <p>Time</p>
