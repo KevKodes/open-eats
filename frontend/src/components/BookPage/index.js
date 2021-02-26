@@ -13,6 +13,14 @@ const BookPage = () => {
   const restaurantId = restaurant?.id;
   const userId = sessionUser?.id;
 
+  const occasionList = [
+    "Birthday",
+    "Anniversary",
+    "Date Night",
+    "Business Meal",
+    "Celebration"
+  ]
+
   // States set by the form
   const [occasion, setOccasion] = useState('');
   const [request, setRequest] = useState('');
@@ -73,8 +81,9 @@ const BookPage = () => {
   return (
     <>
       <div className="book-header">
+        <h2>You're almost done!</h2>
         <div className="book-header-photo">
-          {restaurant?.mainImageUrl}
+          <img src={restaurant?.mainImageUrl} />
         </div>
         <div className="book-header-content">
           <div className="book-name">
@@ -99,7 +108,33 @@ const BookPage = () => {
       <span>Diner details</span>
       <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
       <form className="book-res-form" onSubmit={bookHandler}>
-
+        <div className="book-form-top">
+          <input 
+            className="book-phone"
+            placeholder="Phone number"
+            />
+          <input 
+            className="book-email"
+            value={sessionUser.email}
+            readOnly
+          />
+        </div>
+        <div className="book-form-bottom">
+          <select
+            value={occasion}
+            placeholder="Select an occasion (optional)"
+            onChange={e => setOccasion(e.target.value)}>
+            {occasionList.map((occ, idx) => (
+              <option key={idx} value={occ}>{occ}</option>
+            ))}
+          </select>
+          <textarea 
+            placeholder="Add a special request (optional)"
+            onChange={e => setRequest(e.target.value)}
+            value="request"
+          />
+        </div>
+        <button className="book-form-button" type="submit">Complete reservation</button>
       </form>
     </>
   )
