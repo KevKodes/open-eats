@@ -6,6 +6,7 @@
     box-sizing: border-box;
     position: relative;
     align-items: center;
+    border-bottom: .0625rem solid rgba(0,0,0,.06);
 }
 
 /* LEFT */

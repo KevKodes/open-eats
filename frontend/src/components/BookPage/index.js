@@ -107,29 +107,33 @@ const BookPage = () => {
     )
     bottomContent = (
       <div className="book-show-form">
-        <span>Diner details</span>
-        <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
+        <div className="show-form-header">
+          <span>Diner details</span>
+          <span>{`${sessionUser.firstName} ${sessionUser.lastName}`}</span>
+        </div>
         <form className="book-res-form" onSubmit={bookHandler}>
           <div className="book-form-top">
             <input 
-              className="book-phone"
+              className="book-phone book-form-field"
               placeholder="Phone number"
               />
             <input 
-              className="book-email"
+              className="book-email book-form-field"
               value={sessionUser.email}
               readOnly
             />
           </div>
           <div className="book-form-bottom">
             <select
+              className="book-form-field" 
               value={occasion}
               onChange={e => setOccasion(e.target.value)}>
               {occasionList.map((occ, idx) => (
                 <option key={idx} value={occ}>{occ}</option>
               ))}
             </select>
-            <textarea 
+            <textarea
+              className="book-form-field"  
               placeholder="Add a special request (optional)"
               onChange={e => setRequest(e.target.value)}
               value={request}
@@ -142,33 +146,46 @@ const BookPage = () => {
   }
 
   return (
-    <div className="book-main">
-      {headerContent}
-      <div className="book-header">
-        <div className="book-header-photo">
-          <img src={restaurant?.mainImageUrl} />
-        </div>
-        <div className="book-header-content">
-          <div className="book-name">
-            {restaurant?.name}
+    <div className="full-book">
+      <div className="book-main">
+        {headerContent}
+        <div className="book-header">
+          <div className="book-header-photo">
+            <img src={restaurant?.mainImageUrl} />
           </div>
-          <div className="book-info">
-            <div className="book-info-date">
-              <i className="far fa-calendar"></i>
-              <span>{displayDate}</span>
+          <div className="book-header-content">
+            <div className="book-name">
+              {restaurant?.name}
             </div>
-            <div className="book-info-time">
-              <i className="far fa-clock"></i>
-              <span>{reservationTime}</span>
-            </div>
-            <div className="book-info-party">
-              <i className="far fa-user"></i>
-              <span>{partySize}</span>
+            <div className="book-info">
+              <div className="book-info-date">
+                <i className="far fa-calendar"></i>
+                <span>{displayDate}</span>
+              </div>
+              <div className="book-info-time">
+                <i className="far fa-clock"></i>
+                <span>{reservationTime}</span>
+              </div>
+              <div className="book-info-party">
+                <i className="far fa-user"></i>
+                <span>{partySize}</span>
+              </div>
             </div>
           </div>
         </div>
+        {bottomContent}
       </div>
-      {bottomContent}
+      <div className="book-side">
+        <h3>What to know before you go</h3>
+        <span>Important dining information</span>
+        <p>We have a 15 minute grace period. Please call us if you are running 
+          later than 15 minutes after your reservation time.
+        </p>
+        <p>
+          We may contact you about this reservation, so please ensure your 
+          email and phone number are up to date.
+        </p>
+      </div>
     </div>
   )
 }

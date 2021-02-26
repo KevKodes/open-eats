@@ -1,16 +1,25 @@
+.full-book {
+  display: flex;
+  flex-direction: row;
+  color: #2d333f;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 .book-main {
-  max-width: 636px;
+  width: 636px;
   margin: 32px 64px;
   margin-bottom: 80px;
-  color: #2d333f;
 }
 
 .book-header {
   width: 100%;
   height: 64px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   display: flex;
   flex-direction: row;
+  border-bottom: .0625rem solid rgba(0,0,0,.06);
+  padding-bottom: 16px;
 }
 
 .book-header-photo {
@@ -31,9 +40,141 @@
   font-size: 24px;
   line-height: 28px;
   margin: 0 0 4px;
+  font-weight: 550;
 }
 
 .book-info {
   display: flex;
   flex-direction: row;
+}
+
+.book-info-date,
+.book-info-time,
+.book-info-party {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-right: 24px;
+}
+
+.book-info-date span,
+.book-info-time span,
+.book-info-party span {
+  margin: 0 8px;
+  display: flex;
+  font-size: 16px;
+  line-height: 24px;
+  justify-content: center;
+}
+
+/* Form */
+.show-form-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-form-header span {
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.book-res-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.book-form-top,
+.book-form-bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-form-field {
+  font-size: 13px;
+  color: #2d333f;
+  width: 100%;
+  border: .0625rem solid #d8d9db;
+  border-radius: 4px;
+  height: 100%;
+  display: block;
+  background-color: #fff;
+  padding: .875rem 32px .875rem 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.book-phone,
+.book-form-bottom select {
+  margin-bottom: 16px;
+  margin-right: 16px;
+}
+
+.book-email {
+  background-color: #f1f2f4;
+}
+
+.book-email:focus {
+  outline: none;
+}
+
+.book-form-button {
+  background-color: #da3743;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: .875rem 1.75rem .9375rem;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  transition: background-color 300ms ease-out;
+  cursor: pointer;
+  border-color: #b8222d;
+  border-width: 0;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.book-phone:hover,
+.book-form-bottom select:hover,
+.book-form-bottom textarea:hover {
+  outline: none;
+  border-color: #2d333f;
+}
+
+.book-form-button:hover {
+  background-color: #b8222d;
+  color: #fff;
+}
+
+/* confirmation */
+.hide-form-name,
+.hide-form-email {
+  margin: 16px 0;
+}
+
+.book-hide-form {
+  margin-bottom: 120px;
+}
+
+/* side bar */
+.book-side {
+  width: 300px;
+  margin: 32px;
+}
+
+.book-side h3 {
+  /* margin: 16px; */
+}
+
+.book-side span {
+  font-weight: 500;
+}
+
+.book-side p {
+  font-size: 14px;
+  font-weight: 300px;
 }
