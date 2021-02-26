@@ -105,7 +105,6 @@ export default function ReservationForm({ restaurant }) {
           </select>
         </div>
         <div className="form-bottom">
-          
             <div className="bottom-input-date">
               <p>Date</p>
               <DatePicker 

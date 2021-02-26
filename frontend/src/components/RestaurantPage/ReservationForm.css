@@ -65,6 +65,7 @@
 .react-datepicker__input-container input {
   display: block;
   width: 100%;
+  border: none;
 }
 
 .react-datepicker__day--selected {

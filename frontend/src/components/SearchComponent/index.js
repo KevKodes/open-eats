@@ -1,29 +1,67 @@
 import {useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRestaurants } from '../../store/restaurants';
+import DatePicker from 'react-datepicker';
 import './SearchComponent.css';
 
 const SearchComponent = () => {
+  const dispatch = useDispatch();
   const today = new Date();
 
-  const [resDate, setResDate] = useState("Mar 1, 2021");
-  const [resTime, setResTime] = useState("7:00 pm")
+  const [reservationDate, setReservationDate] = useState(new Date());
+  const [reservationTime, setReservationTime] = useState("7:00 pm")
   const [partySize, setPartySize] = useState('2 people');
   const [searchString, setSearchString] = useState('');
-  const timeOptions = ["7:00 pm", "7:30 pm", "8:00 pm"]
-  const partySizeOptions = ['1 person', '2 people', '3 people', '4 people', '5 people',
-    '6 people', '7 people', '8 people', '9 people', '10 people', '11 people',
-    '12 people', '13 people', '14 people', '15 people', '16 people', '17 people',
-    '18 people', '19 people', '20 people'];
+  const timeOptions = [
+    "8:00 AM",
+    "8:30 AM",
+    "9:00 AM",
+    "9:30 AM",
+    "10:00 AM",
+    "10:30 AM",
+    "11:00 AM",
+    "11:30 AM",
+    "12:00 PM",
+    "12:30 PM",
+    "1:00 PM",
+    "1:30 PM",
+    "2:00 PM",
+    "2:30 PM",
+    "3:00 PM",
+    "3:30 PM",
+    "4:00 PM",
+    "4:30 PM",
+    "5:00 PM",
+    "5:30 PM",
+    "6:00 PM",
+    "6:30 PM",
+    "7:00 PM",
+    "7:30 PM",
+    "8:00 PM",
+    "8:30 PM",
+    "9:00 PM",
+    "9:30 PM",
+    "10:00 PM",
+    "10:30 PM",
+    "11:00 PM",
+    "11:30 PM",
+  ];
+  const partySizeOptions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-  // useEffect(() => {
+  useEffect(() => {
+    dispatch(getRestaurants());
+  }, [dispatch])
 
-  // }, [partySize])
+  const restaurantList = useSelector(state => {
+    return state.restaurants.list
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const reservation = {
-      resTime,
-      resDate,
+      reservationTime,
+      reservationDate,
       partySize
     }
     // it will do a search but have the details of the form saved
@@ -42,12 +80,11 @@ const SearchComponent = () => {
         <div className="search-form-left">
           <div className="date-section">
             <i className="far fa-calendar"></i>
-            <div
+            <DatePicker
               className="date-selector"
-              type="dropdown"
-              value={resDate}
-              onChange={e => setResDate(e.target.value)}
-            >{resDate}</div>
+              selected={reservationDate}
+              onChange={date => setReservationDate(date)}
+            />
             <i className="fas fa-angle-down"></i>
             <div className="calendar-hidden">
 
@@ -57,8 +94,8 @@ const SearchComponent = () => {
             <i className="far fa-clock"></i>
             <select
               className="time-selector"
-              value={resTime}
-              onChange={e => setResTime(e.target.value)}
+              value={reservationTime}
+              onChange={e => setReservationTime(e.target.value)}
             >
               {timeOptions.map((time, idx) => (
                 <option key={idx} value={time}>{time}</option>
@@ -74,7 +111,7 @@ const SearchComponent = () => {
             >
               {partySizeOptions.map((size, idx) => (
                 <option key={idx} value={size}>
-                  {size}
+                  {`${size} people`}
                 </option>
               ))}
             </select>

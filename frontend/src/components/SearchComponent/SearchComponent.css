@@ -56,17 +56,20 @@
   padding: 0 4px;
   margin-left: 4px;
   flex-shrink: 0;
+  align-items: center;
+  position: relative;
 }
 
-.calendar-hidden {
-  visibility: hidden;
+.date-section i {
+  position: relative;
 }
 
-.calendar-active {
-  visibility: visible;
-  height: 303px;
-  width: 290px;
-  z-index: 2;
+.date-section .react-datepicker-wrapper,
+.date-section .react-datepicker__input-container,
+.date-section .react-datepicker__input-container input {
+  display: block;
+  width: 110px;
+  border: none;
 }
 
 /* TIME */
