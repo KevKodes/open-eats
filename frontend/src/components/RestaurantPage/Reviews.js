@@ -8,7 +8,7 @@ export default function Reviews() {
         <h2>What people are saying</h2>
       </div>
       <div className="reviews-body">
-        <p>Reviews comming soon.</p>
+        <p>Reviews coming soon.</p>
       </div>
     </div>
   )

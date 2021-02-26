@@ -90,6 +90,11 @@
   height: 35px;
 }
 
+.res-form-errors li {
+  list-style: none;
+  color: #da3743;
+}
+
 .res-form-button {
   background-color: #da3743;
   color: #fff;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -47,12 +47,17 @@ const PARTYSIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1
 export default function ReservationForm({ restaurant }) {
   const numBookings = Math.floor(Math.random() * 30)
   const sessionUser = useSelector(state => state.session.user);
-  const userId = sessionUser.id;
+  const userId = sessionUser?.id;
   const restaurantId = restaurant.id;
   const [partySize, setPartySize] = useState(2);
   const [reservationDate, setReservationDate] = useState(new Date());
   const [reservationTime, setReservationTime] = useState('7:00 pm');
+  const [errors, setErrors] = useState([]);
   const history = useHistory();
+
+  useEffect(() => {
+    setErrors([]);
+  }, [sessionUser])
 
   const reservationHandler = e => {
     e.preventDefault();
@@ -63,22 +68,16 @@ export default function ReservationForm({ restaurant }) {
       userId,
       restaurantId
     }
-    console.log(initialReservation);
-    //redirect to the reservation page with the initial reservation 
-    // need to give the opportunity for occasion and request
-    // return <Redirect to={{
-    //     pathname: "/book",
-    //     state: { reservation: initialReservation }
-    //   }}
-    // />
-    // if (userId) {
-      
-    // }
 
-    history.push({
-      pathname: "/book",
-      state: { reservation: initialReservation }
-    })
+    if (userId) {
+      history.push({
+        pathname: "/book",
+        state: { reservation: initialReservation }
+      })
+    } else {
+      setErrors(['Please login to make a reservation'])
+    }
+
   }
 
   return (
@@ -116,6 +115,11 @@ export default function ReservationForm({ restaurant }) {
             </select>
           </div>
         </div>
+        <ul className='res-form-errors'>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
         <button 
           className='res-form-button'
           type="submit"
