@@ -4,11 +4,13 @@ import { login } from './session';
 import sessionReducer from './session';
 import restaurantReducer from './restaurants';
 import photoReducer from "./photos";
+import reservationsReducer from "./reservations";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   restaurants: restaurantReducer,
   photos: photoReducer,
+  reservations: reservationsReducer,
 });
 
 let enhancer;

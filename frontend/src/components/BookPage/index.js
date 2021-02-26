@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { postReservation } from '../../store/reservations'
@@ -11,6 +11,7 @@ const BookPage = () => {
   const baseReservation = location.state.reservation;
   const restaurant = location.state.restaurant;
   const sessionUser = useSelector(state => state.session.user)
+  const confirmedRes = useSelector(state => state?.reservations?.reservationList[0])
   const { reservationDate, partySize, reservationTime } = baseReservation;
   const restaurantId = restaurant?.id;
   const userId = sessionUser?.id;
@@ -78,13 +79,18 @@ const BookPage = () => {
       occasion,
       request
     }
-    
-    // dispatch reservation to the backend
-    const confirmedReservation = await dispatch(postReservation(finalReservation));
-    console.log('confirmedReservation: ', confirmedReservation)
-    // send user to their reservations page or render a confirmation
 
+    // dispatch reservation to the backend
+    await dispatch(postReservation(finalReservation));
+    // send user to their reservations page or render a confirmation
+    
   }
+  
+  useEffect(() => {
+    
+    console.log('confirmedReservation: ', confirmedRes)
+
+  }, [confirmedRes])
 
   return (
     <>

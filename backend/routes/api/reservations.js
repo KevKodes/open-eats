@@ -6,7 +6,6 @@ const router = express.Router();
 
 // post a single reservation
 router.post('/', asyncHandler(async (req, res) => {
-  console.log("req.body: ", req.body)
   const confirmed = await Reservation.create(req.body);
   return res.json(confirmed)
 }))

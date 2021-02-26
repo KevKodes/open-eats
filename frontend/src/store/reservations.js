@@ -36,8 +36,12 @@ const initialState = {
 const reservationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_ONE: {
-      const allReservations = []
-      //update and return state
+      const newReservation = [action.reservation]
+      const addedRes = {
+        ...state,
+        reservationList: newReservation
+      }
+      return addedRes
     }
     default:
       return state;
