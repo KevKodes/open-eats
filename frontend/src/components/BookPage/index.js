@@ -99,6 +99,12 @@ const BookPage = () => {
         <div className="hide-form-email">
           {`Contact email: ${sessionUser.email}`}
         </div>
+        <div className="hide-form-occasion">
+          {`Occasion: ${occasion}`}
+        </div>
+        <div className="hide-form-request">
+          {`Special request: ${request}`}
+        </div>
       </div>
     )
   } else {

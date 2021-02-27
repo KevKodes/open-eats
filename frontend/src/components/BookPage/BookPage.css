@@ -152,7 +152,9 @@
 
 /* confirmation */
 .hide-form-name,
-.hide-form-email {
+.hide-form-email,
+.hide-form-occasion,
+.hide-form-request {
   margin: 16px 0;
 }
 
@@ -164,10 +166,6 @@
 .book-side {
   width: 300px;
   margin: 32px;
-}
-
-.book-side h3 {
-  /* margin: 16px; */
 }
 
 .book-side span {
