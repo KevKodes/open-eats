@@ -106,8 +106,19 @@
     cursor: pointer;
 }
 
+/* search */
+.search-button-modal {
+    display: flex;
+    align-items: center;
+    color:#2d333f;
+    z-index: 5;
+    position: absolute;
+}
+
 .search-image {
     padding: 0 16px;
+    border: none;
+    background-color: white;
     border-left: .0625rem solid rgba(0,0,0,.06);
     height: 24px;
     margin: 8px;
