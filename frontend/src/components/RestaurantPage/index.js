@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { getOneRestaurant } from '../../store/restaurants';
 import ReservationForm from './ReservationForm';
 import RestaurantContent from './RestaurantContent';
@@ -9,7 +9,9 @@ import './RestaurantPage.css';
 
 export default function RestaurantPage() {
   const { restaurantId } = useParams();
+  const location = useLocation();
   const dispatch = useDispatch();
+  const baseReservation = location.state.reservation;
 
   // get the one restaurant based on id
   useEffect(() => {
@@ -44,7 +46,7 @@ export default function RestaurantPage() {
         </div>
         <div className="sidebar">
           <div className="reservation-form">
-            <ReservationForm restaurant={restaurant} />
+            <ReservationForm restaurant={restaurant} reservation={baseReservation} />
           </div>
           <div className="extra-info">
             <div className="info-map">

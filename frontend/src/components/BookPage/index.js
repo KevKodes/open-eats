@@ -36,32 +36,32 @@ const BookPage = () => {
   const resDate = reservationDate.getDate();
 
   let weekday = new Array(7);
-  weekday[0] = "Mon";
-  weekday[1] = "Tues";
-  weekday[2] = "Wed";
-  weekday[3] = "Thurs";
-  weekday[4] = "Fri";
-  weekday[5] = "Sat";
-  weekday[6] = "Sun";
+  weekday[0] = "Sun";
+  weekday[1] = "Mon";
+  weekday[2] = "Tues";
+  weekday[3] = "Wed";
+  weekday[4] = "Thurs";
+  weekday[5] = "Fri";
+  weekday[6] = "Sat";
   const outputDay = weekday[dayNum];
 
   const months = {
-    1: "Jan",
-    2: "Feb",
-    3: "March",
-    4: "April",
-    5: "May",
-    6: "June",
-    7: "July",
-    8: "Aug",
-    9: "Sept",
-    10: "Oct",
-    11: "Nov",
-    12: "Dec"
+    0: "Jan",
+    1: "Feb",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "Aug",
+    8: "Sept",
+    9: "Oct",
+    10: "Nov",
+    11: "Dec"
   }
   const dispMonth = months[resMonth];
 
-  const formattedDate = `${resMonth}/${resDate}/${resYear}`; // 2/26/2021
+  const formattedDate = `${resMonth + 1}/${resDate}/${resYear}`; // 2/26/2021
   const displayDate = `${outputDay}, ${dispMonth} ${resDate}`; // Fri, Feb 26
 
   //Handle the reservation

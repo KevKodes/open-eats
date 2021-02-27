@@ -44,7 +44,7 @@ const TIMES = [
 
 const PARTYSIZES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-export default function ReservationForm({ restaurant }) {
+export default function ReservationForm({ restaurant, reservation }) {
   const sessionUser = useSelector(state => state.session.user);
   const userId = sessionUser?.id;
   const restaurantId = restaurant.id;
@@ -58,7 +58,10 @@ export default function ReservationForm({ restaurant }) {
   // set a random number for booked since it isn't built out
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * 30)
-    setNumBookings(randomNum)
+    setNumBookings(randomNum);
+    setPartySize(reservation?.partySize);
+    setReservationTime(reservation?.reservationTime);
+    setReservationDate(reservation?.reservationDate);
   },[])
 
   useEffect(() => {
