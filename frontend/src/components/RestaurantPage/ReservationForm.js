@@ -60,7 +60,8 @@ export default function ReservationForm({ restaurant, reservation }) {
     const randomNum = Math.floor(Math.random() * 30)
     setNumBookings(randomNum);
     if (reservation) {
-      setPartySize(reservation.partySize);
+      const partyVal = reservation.partySize.split(' ')[0]
+      setPartySize(partyVal);
       setReservationTime(reservation.reservationTime);
       setReservationDate(reservation.reservationDate);
     }
