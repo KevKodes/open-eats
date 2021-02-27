@@ -25,6 +25,7 @@
   display: flex;
   justify-content: center;
   width: 950px;
+  color: #2d333f;
 }
 
 .search-form-left {
@@ -166,4 +167,37 @@
   border-width: 0;
   border-radius: 4px;
   font-size: 16px;
+}
+
+/* Search Dropdown */
+.search-form-right {
+  position: relative;
+  display: flex;
+}
+
+.dropdown-search-list {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.search-list-block {
+  background-color: white;
+  text-decoration: none;
+  color: #2d333f;
+  display: flex;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.search-form-errors li {
+  color: white;
+  list-style: none;
+  position: absolute;
+  left: 75px;
 }

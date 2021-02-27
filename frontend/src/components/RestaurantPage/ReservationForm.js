@@ -55,6 +55,7 @@ export default function ReservationForm({ restaurant }) {
   const [numBookings, setNumBookings] = useState(10);
   const history = useHistory();
   
+  // set a random number for booked since it isn't built out
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * 30)
     setNumBookings(randomNum)

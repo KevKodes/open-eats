@@ -3,15 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurants } from '../../store/restaurants';
 import DatePicker from 'react-datepicker';
 import './SearchComponent.css';
+import { useHistory } from 'react-router-dom';
 
 const SearchComponent = () => {
   const dispatch = useDispatch();
-  const today = new Date();
+  const history = useHistory();
 
   const [reservationDate, setReservationDate] = useState(new Date());
   const [reservationTime, setReservationTime] = useState("7:00 pm")
   const [partySize, setPartySize] = useState('2 people');
   const [searchString, setSearchString] = useState('');
+  const [searchReturn, setSearchReturn] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(null);
+  const [errors, setErrors] = useState([]);
   const timeOptions = [
     "8:00 AM",
     "8:30 AM",
@@ -48,6 +52,7 @@ const SearchComponent = () => {
   ];
   const partySizeOptions = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+  //get all the restaurants from the db to search
   useEffect(() => {
     dispatch(getRestaurants());
   }, [dispatch])
@@ -56,16 +61,54 @@ const SearchComponent = () => {
     return state.restaurants.list
   })
 
+  // update the dropdown when searchString changes
+  const filterRestaurants = str => {
+    const string = str.toLowerCase();
+    const filteredList = restaurantList.filter(restaurant => (
+      restaurant.name.toLowerCase().includes(string) ||
+      restaurant.cuisineType.toLowerCase().includes(string)
+    ))
+    return filteredList
+  }
+
+  // logic for when to show the search dropdown
+  useEffect(() => {
+    setErrors([])
+    const parsedList = filterRestaurants(searchString)
+
+    if ((parsedList.length === 1 && parsedList[0].name === searchString) ||
+      searchString.length < 2
+    ) {
+      return setShowDropdown(null)
+    }
+
+    if (searchString.length > 2) {
+      setSearchReturn(parsedList);
+      setShowDropdown(true)
+    }
+  },[searchString])
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const restaurant = restaurantList.filter(rest => (
+      rest.name.toLowerCase() === searchString.toLowerCase()
+    ))[0]
+
+    if (!restaurant) return setErrors(["Please select a valid restaurant name."])
 
     const reservation = {
       reservationTime,
       reservationDate,
       partySize
     }
-    // it will do a search but have the details of the form saved
-    console.log(reservation);
+    // send to the restaurant page but have the details of the form saved
+    history.push({
+      pathname: `/restaurants/${restaurant.id}`,
+      state: {
+        reservation
+      }
+    })
   }
 
   return (
@@ -117,17 +160,36 @@ const SearchComponent = () => {
             </select>
           </div>
         </div>
-        <div className="search-section">
-          <i className="fas fa-search"></i>
-          <input
-            className="search-bar"
-            value={searchString}
-            onChange={e => setSearchString(e.target.value)}
-            placeholder="Restaurant or Cuisine"
-          ></input>
+        <div className="search-form-right">
+          <div className="search-section">
+            <i className="fas fa-search"></i>
+            <input
+              className="search-bar"
+              value={searchString}
+              onChange={e => setSearchString(e.target.value)}
+              placeholder="Restaurant or Cuisine"
+            />
+            <div className="dropdown-search-list">
+              {showDropdown && searchReturn.map(item => (
+                <div
+                key={item.id}
+                className="search-list-block"
+                onClick={() => setSearchString(item.name)}
+                >
+                  <div className="search-list-item-name">{item.name}</div>
+                  <div className="search-list-item-type">{item.cuisineType}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button className="search-button" type="submit">Let's go</button>
         </div>
-        <button className="search-button" type="submit">Let's go</button>
       </form>
+      <div className="search-form-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </div>
     </div>
   )
 }
