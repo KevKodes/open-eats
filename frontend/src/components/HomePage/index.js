@@ -29,7 +29,7 @@ export default function HomePage() {
 						<h2>Available for reservation now</h2>
 					</div>
 					<div className="carousel">
-						{restaurantList.length && restaurantList.map((rest, idx) => (
+						{restaurantList?.length && restaurantList.map((rest, idx) => (
 							<ResaurantCard key={idx} restaurant={rest} />
 						))}
 					</div>

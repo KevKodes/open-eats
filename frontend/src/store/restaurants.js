@@ -37,9 +37,7 @@ export const getOneRestaurant = (id) => async (dispatch) => {
 
 
 // Reducer
-const initialState = {
-  list: []
-}
+const initialState = {}
 
 const restaurantReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -58,7 +56,7 @@ const restaurantReducer = (state = initialState, action) => {
       const oneRestaurant = [action.restaurant];
       return {
         ...state,
-        list: oneRestaurant
+        [action.restaurant.id]: action.restaurant
       }
     }
     default:

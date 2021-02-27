@@ -64,7 +64,7 @@ const SearchComponent = () => {
   // update the dropdown when searchString changes
   const filterRestaurants = str => {
     const string = str.toLowerCase();
-    const filteredList = restaurantList.filter(restaurant => (
+    const filteredList = restaurantList?.filter(restaurant => (
       restaurant.name.toLowerCase().includes(string) ||
       restaurant.cuisineType.toLowerCase().includes(string)
     ))

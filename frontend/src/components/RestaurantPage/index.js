@@ -17,9 +17,9 @@ export default function RestaurantPage() {
   useEffect(() => {
     dispatch(getOneRestaurant(restaurantId));
   }, [dispatch])
-
-  const restaurantList = useSelector(state => {
-    return state.restaurants.list
+  
+  const restaurant = useSelector(state => {
+    return state.restaurants[restaurantId]
   })
 
   //handler for saving restaurant to favorites
@@ -29,8 +29,8 @@ export default function RestaurantPage() {
 
   return (
     <div className='na'>
-    {restaurantList.length && restaurantList.map((restaurant, idx) => (
-      <div key={idx} className="restaurant-body">
+    {restaurant && (
+      <div className="restaurant-body">
         <div className="restaurant-header">
           <img src={restaurant.mainImageUrl} />
           <div 
@@ -78,7 +78,7 @@ export default function RestaurantPage() {
           </div>
         </div>
       </div>
-      ))}
+      )}
     </div>
   )
 }
