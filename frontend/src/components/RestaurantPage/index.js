@@ -24,7 +24,7 @@ export default function RestaurantPage() {
 
   //handler for saving restaurant to favorites
   const saveHandler = e => {
-    console.log('add save functionality')
+    // console.log('add save functionality')
   }
 
   return (

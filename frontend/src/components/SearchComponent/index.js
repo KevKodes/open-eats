@@ -116,6 +116,11 @@ const SearchComponent = () => {
       <h1 className="search-title">
         Find your table for any occasion
       </h1>
+      <div className="search-form-errors">
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
+      </div>
       <form
         className="search-form"
         onSubmit={handleSubmit}
@@ -185,11 +190,7 @@ const SearchComponent = () => {
           <button className="search-button" type="submit">Let's go</button>
         </div>
       </form>
-      <div className="search-form-errors">
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </div>
+      
     </div>
   )
 }

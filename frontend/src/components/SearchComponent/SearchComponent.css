@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   margin: 48px;
+  position: relative;
 }
 
 .search-title {
@@ -202,5 +203,6 @@
   color: white;
   list-style: none;
   position: absolute;
-  left: 75px;
+  top: 50px;
+  right: 0;
 }
