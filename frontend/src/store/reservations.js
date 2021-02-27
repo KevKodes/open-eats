@@ -23,7 +23,6 @@ export const postReservation = reservation => async (dispatch) => {
 
   if (res.ok) {
     const setReservation = await res.json();
-    console.log('returned in thunk: ', setReservation)
     dispatch(post(setReservation))
   }
 }
