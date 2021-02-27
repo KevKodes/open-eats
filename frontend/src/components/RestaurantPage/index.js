@@ -11,7 +11,7 @@ export default function RestaurantPage() {
   const { restaurantId } = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
-  const baseReservation = location.state.reservation;
+  const baseReservation = location?.state?.reservation;
 
   // get the one restaurant based on id
   useEffect(() => {

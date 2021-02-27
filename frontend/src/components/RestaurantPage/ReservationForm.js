@@ -59,9 +59,11 @@ export default function ReservationForm({ restaurant, reservation }) {
   useEffect(() => {
     const randomNum = Math.floor(Math.random() * 30)
     setNumBookings(randomNum);
-    setPartySize(reservation?.partySize);
-    setReservationTime(reservation?.reservationTime);
-    setReservationDate(reservation?.reservationDate);
+    if (reservation) {
+      setPartySize(reservation.partySize);
+      setReservationTime(reservation.reservationTime);
+      setReservationDate(reservation.reservationDate);
+    }
   },[])
 
   useEffect(() => {
