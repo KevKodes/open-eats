@@ -11,8 +11,14 @@
   transition: all 0.3s;
   margin-right: 8px;
   margin-left: 8px;
+  margin-top: 8px;
   text-decoration: none;
   color: #2d333f;
+}
+
+.full-card:hover {
+  box-shadow: 0 2px 4px rgb(45 51 63 / 20%);
+  transform: translateY(-6px);
 }
 
 .card-image img {
