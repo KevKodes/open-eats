@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { postReservation } from '../../store/reservations'
 
 import './BookPage.css';
 
 const BookPage = () => {
+  const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-  const baseReservation = location.state.reservation;
-  const restaurant = location.state.restaurant;
-  const sessionUser = useSelector(state => state.session.user)
+  const baseReservation = location?.state?.reservation;
+  const restaurant = location?.state?.restaurant;
+  const sessionUser = useSelector(state => state?.session?.user)
   const confirmedRes = useSelector(state => state?.reservations?.reservationList[0])
+
+  // States set by the form
+  let [occasion, setOccasion] = useState('');
+  const [request, setRequest] = useState('');
+
+  if (!baseReservation) {
+    return history.push('/')
+  }
   const { reservationDate, partySize, reservationTime } = baseReservation;
   const restaurantId = restaurant?.id;
   const userId = sessionUser?.id;
@@ -25,9 +34,6 @@ const BookPage = () => {
     "Celebration"
   ]
 
-  // States set by the form
-  let [occasion, setOccasion] = useState('');
-  const [request, setRequest] = useState('');
 
   // section to parse the date object and format it
   const dayNum = reservationDate.getDay();
