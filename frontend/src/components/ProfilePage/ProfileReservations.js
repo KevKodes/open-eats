@@ -49,72 +49,88 @@ export default function ProfileReservations({ userId }) {
     return state.restaurants.list
   })
 
+  // cancel reservations click handler
+  const cancelReservation = (e) => {
+    console.log(`cancel reservation: ${e.target.value}`)
+  }
+
   return (
     <div className="profile-section-reservations">
       <div className="reservations-upcoming">
         <h2 className="profile-section-header" id="reservations">Upcoming Reservations</h2>
-          {futureResList?.length && restaurantList && futureResList.map(res => {
+          {futureResList?.length && restaurantList && futureResList.map((res) => {
             const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
             return (
-            <div className="profile-res-block">
-              <div className="profile-header-photo">
-                <img src={reservRestaurant?.mainImageUrl} />
+            <div key={res.id} className="profile-res-block">
+              <div className="profile-block-left">
+                <div className="profile-header-photo">
+                  <img src={reservRestaurant?.mainImageUrl} />
+                </div>
+                <div className="profile-header-content">
+                  <div className="profile-name">
+                    {reservRestaurant?.name}
+                  </div>
+                  <div className="profile-info">
+                    <div className="profile-info-date">
+                      <i className="far fa-calendar"></i>
+                      <span>{res.reservationDate}</span>
+                    </div>
+                    <div className="profile-info-time">
+                      <i className="far fa-clock"></i>
+                      {res.reservationTime && (
+                        <span className="profile-dis-time">
+                          {res.reservationTime}
+                        </span>
+                      )}
+                    </div>
+                    <div className="profile-info-party">
+                      <i className="far fa-user"></i>
+                      <span>{res.partySize}</span>
+                    </div>
+                  </div>
+                </div>  
               </div>
-              <div className="profile-header-content">
-                <div className="profile-name">
-                  {reservRestaurant?.name}
-                </div>
-                <div className="profile-info">
-                  <div className="profile-info-date">
-                    <i className="far fa-calendar"></i>
-                    <span>{res.reservationDate}</span>
-                  </div>
-                  <div className="profile-info-time">
-                    <i className="far fa-clock"></i>
-                    {res.reservationTime && (
-                      <span className="profile-dis-time">
-                        {res.reservationTime}
-                      </span>
-                    )}
-                  </div>
-                  <div className="profile-info-party">
-                    <i className="far fa-user"></i>
-                    <span>{res.partySize}</span>
-                  </div>
-                </div>
+              <div className="profile-block-button">
+                <button 
+                  onClick={cancelReservation}
+                  value={res.id}>
+                  Cancel Reservation
+                </button>
               </div>
             </div>
           )})}
       </div>
       <div className="reservations-past">
-        <h2 className="profile-section-header" id="history">Past Reservations</h2>
+        <h2 className="profile-section-header" id="history">Dining History</h2>
         {pastResList?.length && restaurantList && pastResList.map(res => {
           const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
           return (
-            <div className="profile-res-block">
-              <div className="profile-header-photo">
-                <img src={reservRestaurant?.mainImageUrl} />
-              </div>
-              <div className="profile-header-content">
-                <div className="profile-name">
-                  {reservRestaurant?.name}
+            <div key={res.id} className="profile-res-block">
+              <div className="profile-block-left">
+                <div className="profile-header-photo">
+                  <img src={reservRestaurant?.mainImageUrl} />
                 </div>
-                <div className="profile-info">
-                  <div className="profile-info-date">
-                    <i className="far fa-calendar"></i>
-                    <span>{res.reservationDate}</span>
+                <div className="profile-header-content">
+                  <div className="profile-name">
+                    {reservRestaurant?.name}
                   </div>
-                  <div className="profile-info-time">
-                    <i className="far fa-clock"></i>
-                    {res.reservationTime && (
-                      <span className="profile-dis-time">
-                        {res.reservationTime}
-                      </span>
-                    )}
-                  </div>
-                  <div className="profile-info-party">
-                    <i className="far fa-user"></i>
-                    <span>{res.partySize}</span>
+                  <div className="profile-info">
+                    <div className="profile-info-date">
+                      <i className="far fa-calendar"></i>
+                      <span>{res.reservationDate}</span>
+                    </div>
+                    <div className="profile-info-time">
+                      <i className="far fa-clock"></i>
+                      {res.reservationTime && (
+                        <span className="profile-dis-time">
+                          {res.reservationTime}
+                        </span>
+                      )}
+                    </div>
+                    <div className="profile-info-party">
+                      <i className="far fa-user"></i>
+                      <span>{res.partySize}</span>
+                    </div>
                   </div>
                 </div>
               </div>

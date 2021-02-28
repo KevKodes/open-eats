@@ -64,6 +64,12 @@
   flex-direction: row;
   border-bottom: .0625rem solid rgba(0,0,0,.06);
   padding: 24px;
+  justify-content: space-between;
+}
+
+.profile-block-left {
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-header-photo {
@@ -109,4 +115,33 @@
   font-size: 16px;
   line-height: 24px;
   justify-content: center;
+}
+
+.profile-block-button {
+  justify-self: flex-end;
+  padding-right: 24px;
+}
+
+.profile-block-button button {
+  background-color: #da3743;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.5rem;
+  padding: 8px;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  transition: background-color 300ms ease-out;
+  cursor: pointer;
+  border-color: #b8222d;
+  border-width: 0;
+  width: 100%;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.profile-block-button button:hover {
+  background-color: #b8222d;
+  color: #fff;
 }

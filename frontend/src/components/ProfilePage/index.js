@@ -31,9 +31,9 @@ export default function ProfilePage() {
       </div>
       <div className="profile-body">
         <div className="profile-nav">
-          <a onClick={reservationsClick}>Reservations</a>
-          <a onClick={savedClick}>Saved Restaurants</a>
+          <a onClick={reservationsClick}>Upcoming Reservations</a>
           <a onClick={historyClick}>Dining History</a>
+          <a onClick={savedClick}>Saved Restaurants</a>
         </div>
         <div className="profile-content">
           <ProfileReservations userId={sessionUser?.id} />
