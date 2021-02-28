@@ -12,10 +12,19 @@ export default function ProfileReservations({ userId }) {
   }, [dispatch])
 
   //sort the reservation into future and past
-  const futureResList = useSelector(state => (
+  let futureResList = [];
+  let pastResList = [];
+  const today = new Date();
+  const ResList = useSelector(state => (
     state.reservations.reservationList
   ))
+  ResList?.forEach(res => {
+    const resDate = new Date(res.reservationDate);
+    if (resDate) console.log(resDate)
+  })
   console.log('future reservations: ', futureResList)
+
+  // format the display date and time
 
   // gather restaurants
   useEffect(() => {
@@ -30,7 +39,7 @@ export default function ProfileReservations({ userId }) {
     <div className="profile-section-reservations">
       <div className="reservations-upcoming">
         <h2 className="profile-section-header" id="reservations">Upcoming Reservations</h2>
-          {futureResList?.length && futureResList.map(res => {
+          {futureResList?.length && restaurantList && futureResList.map(res => {
             const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
             return (
             <div className="profile-res-block">
@@ -44,7 +53,7 @@ export default function ProfileReservations({ userId }) {
                 <div className="profile-info">
                   <div className="profile-info-date">
                     <i className="far fa-calendar"></i>
-                    <span>{res.reservationDate}</span>
+                    <span>{res.reservationDate.toDateString()}</span>
                   </div>
                   <div className="profile-info-time">
                     <i className="far fa-clock"></i>
