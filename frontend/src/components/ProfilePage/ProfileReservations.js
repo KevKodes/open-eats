@@ -19,10 +19,16 @@ export default function ProfileReservations({ userId }) {
     state.reservations.reservationList
   ))
   ResList?.forEach(res => {
-    const resDate = new Date(res.reservationDate);
-    if (resDate) console.log(resDate)
+    let resDate = res.reservationDate;
+    if (typeof resDate !== "object") resDate = new Date(resDate)
+    if (today.getTime() <= resDate.getTime()) {
+      futureResList.push(res)
+    } else {
+      pastResList.push(res)
+    }
   })
   console.log('future reservations: ', futureResList)
+  console.log('past reservations: ', pastResList)
 
   // format the display date and time
 
