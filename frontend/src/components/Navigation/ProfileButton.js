@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
 
@@ -44,15 +44,18 @@ function ProfileButton({ user }) {
                         <div> {`Hi, ${user.firstName}!`}</div>
                     </div>
                     <div className="profile-dropdown-buttons">
-                        <div className="profile-dropdown-profile">
-                            <a href="/my/profile">My Profile</a>
-                        </div>
-                        <div className="profile-dropdown-history">
-                            <a href="/my/reservations">My Dining History</a>
-                        </div>
-                        <div className="profile-dropdown-saved">
-                            <a href="/my/favorites">My Saved Restaurants</a>
-                        </div>
+                        <NavLink 
+                            to="/my/Profile"
+                            className="link"
+                        >My Profile</NavLink>
+                        <NavLink 
+                            to="/my/Profile"
+                            className="link"
+                        >My Dining History</NavLink>
+                        <NavLink 
+                            to="/my/Profile"
+                            className="link"
+                        >My Saved Restaurants</NavLink>
                         <div id="profile-dropdown-signout" onClick={signout}>
                             Sign out
                         </div>

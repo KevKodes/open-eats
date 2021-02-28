@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RestaurantPage from './components/RestaurantPage';
 import BookPage from './components/BookPage';
+import ProfilePage from './components/ProfilePage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/book">
             <BookPage />
+          </Route>
+          <Route path="/my/Profile">
+            <ProfilePage />
           </Route>
         </Switch>
       )}

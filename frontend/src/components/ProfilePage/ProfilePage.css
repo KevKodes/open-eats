@@ -1,0 +1,51 @@
+.profile-page {
+  color: #2d333f;
+  background-color: #f7f7f7;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: row;
+}
+
+/* header */
+.profile-header {
+  background-color: #fff;
+  width: 100%;
+}
+
+/* sidebar */
+.profile-nav {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  color: #999;
+}
+
+.profile-nav a {
+  margin: 8px 0 0;
+  padding: 8px;
+  
+}
+
+.profile-nav a:hover {
+  color: #333
+}
+
+
+/* content */
+.profile-content {
+  width: 800px;
+  padding: 16px;
+}
+
+.reservations-upcoming,
+.reservations-past,
+.profile-section-saved {
+  background-color: #fff;
+}
+
+.profile-content h2 {
+  width: 100%;
+  border-bottom: .0625rem solid #d8d9db;
+}

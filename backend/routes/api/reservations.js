@@ -10,4 +10,15 @@ router.post('/', asyncHandler(async (req, res) => {
   return res.json(confirmed)
 }))
 
+// get a user's reservations
+router.get('/:id', asyncHandler(async (req, res) => {
+  const userId = req.params.id;
+  const resList = await Reservation.findAll({
+    where: {
+      userId
+    }
+  })
+  return res.json(resList)
+}))
+
 module.exports = router;
