@@ -19,6 +19,18 @@ export default function ProfileReservations({ userId }) {
     state.reservations.reservationList
   ))
   ResList?.forEach(res => {
+    //format the display time
+    if (!(res.reservationTime.includes('AM') || res.reservationTime.includes('PM'))) {
+      let roughTimeArr = res.reservationTime.split(':')
+      if (roughTimeArr[0] > 12) {
+        roughTimeArr[0] = roughTimeArr[0] - 12;
+        roughTimeArr.length = 2
+        res.reservationTime = roughTimeArr.join(':') + ' PM'
+      } else {
+        roughTimeArr.length = 2
+        res.reservationTime = roughTimeArr.join(':') + ' AM'
+      }
+    }
     let resDate = res.reservationDate;
     if (typeof resDate !== "object") resDate = new Date(resDate)
     if (today.getTime() <= resDate.getTime()) {
@@ -27,10 +39,6 @@ export default function ProfileReservations({ userId }) {
       pastResList.push(res)
     }
   })
-  console.log('future reservations: ', futureResList)
-  console.log('past reservations: ', pastResList)
-
-  // format the display date and time
 
   // gather restaurants
   useEffect(() => {
@@ -59,11 +67,15 @@ export default function ProfileReservations({ userId }) {
                 <div className="profile-info">
                   <div className="profile-info-date">
                     <i className="far fa-calendar"></i>
-                    <span>{res.reservationDate.toDateString()}</span>
+                    <span>{res.reservationDate}</span>
                   </div>
                   <div className="profile-info-time">
                     <i className="far fa-clock"></i>
-                    <span>{res.reservationTime}</span>
+                    {res.reservationTime && (
+                      <span className="profile-dis-time">
+                        {res.reservationTime}
+                      </span>
+                    )}
                   </div>
                   <div className="profile-info-party">
                     <i className="far fa-user"></i>
@@ -76,7 +88,39 @@ export default function ProfileReservations({ userId }) {
       </div>
       <div className="reservations-past">
         <h2 className="profile-section-header" id="history">Past Reservations</h2>
-
+        {pastResList?.length && restaurantList && pastResList.map(res => {
+          const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
+          return (
+            <div className="profile-res-block">
+              <div className="profile-header-photo">
+                <img src={reservRestaurant?.mainImageUrl} />
+              </div>
+              <div className="profile-header-content">
+                <div className="profile-name">
+                  {reservRestaurant?.name}
+                </div>
+                <div className="profile-info">
+                  <div className="profile-info-date">
+                    <i className="far fa-calendar"></i>
+                    <span>{res.reservationDate}</span>
+                  </div>
+                  <div className="profile-info-time">
+                    <i className="far fa-clock"></i>
+                    {res.reservationTime && (
+                      <span className="profile-dis-time">
+                        {res.reservationTime}
+                      </span>
+                    )}
+                  </div>
+                  <div className="profile-info-party">
+                    <i className="far fa-user"></i>
+                    <span>{res.partySize}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

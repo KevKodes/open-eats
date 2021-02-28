@@ -29,35 +29,35 @@ module.exports = {
           reservationDate: "Thu Dec 24 2020",
           reservationTime: "6:00 pm",
           userId: 1,
-          restaurantId: 3
+          restaurantId: 4
         },
         {
           partySize: 4,
           reservationDate: "Wed Feb 17 2021",
           reservationTime: "1:00 pm",
           userId: 1,
-          restaurantId: 3
+          restaurantId: 5
         },
         {
           partySize: 2,
           reservationDate: "Wed Apr 21 2021",
           reservationTime: "8:00 pm",
           userId: 1,
-          restaurantId: 3
+          restaurantId: 6
         },
         {
           partySize: 2,
           reservationDate: "Tue Jan 12 2021",
           reservationTime: "8:30 pm",
           userId: 1,
-          restaurantId: 3
+          restaurantId: 7
         },
         {
           partySize: 2,
-          reservationDate: "Fri Nov 12 0202",
+          reservationDate: "Fri Nov 13 2020",
           reservationTime: "7:00 pm",
           userId: 1,
-          restaurantId: 3
+          restaurantId: 8
         },
       ], {});
   },

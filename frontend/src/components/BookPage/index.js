@@ -67,8 +67,7 @@ const BookPage = () => {
   }
   const dispMonth = months[resMonth];
 
-  // const formattedDate = `${resMonth + 1}/${resDate}/${resYear}`; // 2/26/2021
-  const formattedDate = new Date(resYear, resMonth, resDate)
+  const formattedDate = `${outputDay} ${dispMonth} ${resDate}, ${resYear}`; // Fri Feb 26, 2021
   const displayDate = `${outputDay}, ${dispMonth} ${resDate}`; // Fri, Feb 26
 
   //Handle the reservation
