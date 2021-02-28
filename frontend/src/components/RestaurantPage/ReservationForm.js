@@ -81,6 +81,13 @@ export default function ReservationForm({ restaurant, reservation }) {
       restaurantId
     }
 
+    // check to make sure the reservation is tomorrow or later
+    const today = new Date()
+    if (reservationDate.getTime() <= today.getTime()) {
+      return setErrors(['Reservations must be made a day in advance'])
+    }
+
+    // check to make sure the user is logged in
     if (userId) {
       history.push({
         pathname: "/book",
@@ -90,7 +97,7 @@ export default function ReservationForm({ restaurant, reservation }) {
         }
       })
     } else {
-      setErrors(['Please login to make a reservation'])
+      setErrors([...errors, 'Please login to make a reservation'])
     }
 
   }

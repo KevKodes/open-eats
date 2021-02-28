@@ -110,6 +110,54 @@ export default function ProfileReservations({ userId, restaurantList }) {
     )
   }
 
+  // set the history section to show 'no history' or the history list
+  let historyBlock = null;
+  if (pastResList?.length && restaurantList) {
+    historyBlock = (
+      pastResList.map(res => {
+      const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
+      return (
+        <div key={res.id} className="profile-res-block">
+          <div className="profile-block-left">
+            <div className="profile-header-photo">
+              <img src={reservRestaurant?.mainImageUrl} />
+            </div>
+            <div className="profile-header-content">
+              <div className="profile-name">
+                {reservRestaurant?.name}
+              </div>
+              <div className="profile-info">
+                <div className="profile-info-date">
+                  <i className="far fa-calendar"></i>
+                  <span>{res.reservationDate}</span>
+                </div>
+                <div className="profile-info-time">
+                  <i className="far fa-clock"></i>
+                  {res.reservationTime && (
+                    <span className="profile-dis-time">
+                      {res.reservationTime}
+                    </span>
+                  )}
+                </div>
+                <div className="profile-info-party">
+                  <i className="far fa-user"></i>
+                  <span>{res.partySize}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    })
+    )
+  } else {
+    historyBlock = (
+      <p className="profile-block-none">
+        No Past Reservations
+      </p>
+    )
+  }
+
   return (
     <div className="profile-section-reservations">
       <div className="reservations-upcoming">
@@ -118,41 +166,7 @@ export default function ProfileReservations({ userId, restaurantList }) {
       </div>
       <div className="reservations-past">
         <h2 className="profile-section-header" id="history">Dining History</h2>
-        {pastResList?.length && restaurantList && pastResList.map(res => {
-          const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
-          return (
-            <div key={res.id} className="profile-res-block">
-              <div className="profile-block-left">
-                <div className="profile-header-photo">
-                  <img src={reservRestaurant?.mainImageUrl} />
-                </div>
-                <div className="profile-header-content">
-                  <div className="profile-name">
-                    {reservRestaurant?.name}
-                  </div>
-                  <div className="profile-info">
-                    <div className="profile-info-date">
-                      <i className="far fa-calendar"></i>
-                      <span>{res.reservationDate}</span>
-                    </div>
-                    <div className="profile-info-time">
-                      <i className="far fa-clock"></i>
-                      {res.reservationTime && (
-                        <span className="profile-dis-time">
-                          {res.reservationTime}
-                        </span>
-                      )}
-                    </div>
-                    <div className="profile-info-party">
-                      <i className="far fa-user"></i>
-                      <span>{res.partySize}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
-        })}
+        {historyBlock}
       </div>
     </div>
   )
