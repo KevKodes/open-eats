@@ -13,7 +13,7 @@ export default function ProfileReservations({ userId }) {
 
   //sort the reservation into future and past
   const futureResList = useSelector(state => (
-    state.reservations
+    state.reservations.reservationList
   ))
   console.log('future reservations: ', futureResList)
 
@@ -29,13 +29,38 @@ export default function ProfileReservations({ userId }) {
   return (
     <div className="profile-section-reservations">
       <div className="reservations-upcoming">
-        <h2 className="profile-section-header">Upcoming Reservations</h2>
-          {futureResList?.length && futureResList.map(res => (
-            <div className="res-date">{res.reservationDate}</div>
-          ))}
+        <h2 className="profile-section-header" id="reservations">Upcoming Reservations</h2>
+          {futureResList?.length && futureResList.map(res => {
+            const reservRestaurant = restaurantList.find(rest => rest.id === res.restaurantId)
+            return (
+            <div className="profile-res-block">
+              <div className="profile-header-photo">
+                <img src={reservRestaurant?.mainImageUrl} />
+              </div>
+              <div className="profile-header-content">
+                <div className="profile-name">
+                  {reservRestaurant?.name}
+                </div>
+                <div className="profile-info">
+                  <div className="profile-info-date">
+                    <i className="far fa-calendar"></i>
+                    <span>{res.reservationDate}</span>
+                  </div>
+                  <div className="profile-info-time">
+                    <i className="far fa-clock"></i>
+                    <span>{res.reservationTime}</span>
+                  </div>
+                  <div className="profile-info-party">
+                    <i className="far fa-user"></i>
+                    <span>{res.partySize}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )})}
       </div>
       <div className="reservations-past">
-        <h2 className="profile-section-header">Past Reservations</h2>
+        <h2 className="profile-section-header" id="history">Past Reservations</h2>
 
       </div>
     </div>

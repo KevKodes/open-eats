@@ -6,7 +6,7 @@ export default function ProfileSaved() {
 
   return (
     <div className="profile-section-saved">
-        <h2 className="profile-section-header">Upcoming Reservations</h2>
+        <h2 className="profile-section-header" id="saved">Saved Restaurants</h2>
 
     </div>
   )

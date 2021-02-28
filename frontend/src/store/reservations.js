@@ -64,8 +64,8 @@ const reservationsReducer = (state = initialState, action) => {
         userReservations.push(res);
       })
       return {
-        ...userReservations,
-        ...state
+        ...state,
+        reservationList: userReservations,
       }
     }
     default:
