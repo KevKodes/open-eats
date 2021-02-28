@@ -76,7 +76,7 @@ const SearchComponent = () => {
     setErrors([])
     const parsedList = filterRestaurants(searchString)
 
-    if ((parsedList.length === 1 && parsedList[0].name === searchString) ||
+    if ((parsedList && parsedList.length === 1 && parsedList[0].name === searchString) ||
       searchString.length < 2
     ) {
       return setShowDropdown(null)
@@ -102,6 +102,7 @@ const SearchComponent = () => {
       reservationDate,
       partySize
     }
+
     // send to the restaurant page but have the details of the form saved
     history.push({
       pathname: `/restaurants/${restaurant.id}`,

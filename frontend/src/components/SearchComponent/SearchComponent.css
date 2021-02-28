@@ -213,7 +213,7 @@
 }
 
 .search-form-errors li {
-  color: white;
+  color: #da3743;
   list-style: none;
   position: absolute;
   top: 50px;

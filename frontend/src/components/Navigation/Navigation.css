@@ -41,7 +41,8 @@
     display: flex;
     flex-direction: row;
     margin: 7px;
-    height: 34px
+    height: 34px;
+    align-items: center;
 }
 
 .user-buttons {
@@ -107,6 +108,10 @@
 }
 
 /* search */
+.nav-search {
+    color: #2d333f
+}
+
 .search-button-modal {
     display: flex;
     align-items: center;
@@ -123,4 +128,9 @@
     height: 24px;
     margin: 8px;
     cursor: pointer;
+}
+
+.search-image .fa-search {
+    color: #2d333f;
+
 }
