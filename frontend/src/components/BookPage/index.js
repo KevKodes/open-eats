@@ -12,7 +12,8 @@ const BookPage = () => {
   const baseReservation = location?.state?.reservation;
   const restaurant = location?.state?.restaurant;
   const sessionUser = useSelector(state => state?.session?.user)
-  const confirmedRes = useSelector(state => state?.reservations?.reservationList[0])
+  // const confirmedRes = useSelector(state => state?.reservations?.reservationList[0])
+  const [confirmedRes, setConfirmedRes] = useState(false)
 
   // States set by the form
   let [occasion, setOccasion] = useState('');
@@ -87,7 +88,8 @@ const BookPage = () => {
     }
 
     // dispatch reservation to the backend
-    await dispatch(postReservation(finalReservation));    
+    await dispatch(postReservation(finalReservation));
+    setConfirmedRes(true);    
   }
 
   // alter the content based on confirmation status

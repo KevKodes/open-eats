@@ -54,6 +54,8 @@
 .profile-section-header {
   border-bottom: .0625rem solid #d8d9db;
   padding: 24px;
+  margin-bottom: 0px;
+  margin-top: 24px;
 }
 
 /* block */
@@ -144,4 +146,19 @@
 .profile-block-button button:hover {
   background-color: #b8222d;
   color: #fff;
+}
+
+.profile-block-none {
+  padding: 24px;
+  margin: 0;
+}
+
+.profile-block-none .link {
+  text-decoration: none;
+  padding-left: 8px;
+  color: #237B98;
+}
+
+.profile-block-none .link:hover {
+  color: #bb232e;
 }
