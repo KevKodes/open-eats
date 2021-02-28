@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRestaurants } from '../../store/restaurants';
 import { getReservations } from '../../store/reservations';
 import { cancelReservation } from '../../store/reservations';
 import { NavLink } from 'react-router-dom';
 
-export default function ProfileReservations({ userId }) {
+export default function ProfileReservations({ userId, restaurantList }) {
   const dispatch = useDispatch();
 
   //get the reservations and sort into past and future
@@ -42,14 +41,14 @@ export default function ProfileReservations({ userId }) {
     }
   })
 
-  // gather restaurants
-  useEffect(() => {
-    dispatch(getRestaurants());
-  }, [dispatch])
+  // // gather restaurants
+  // useEffect(() => {
+  //   dispatch(getRestaurants());
+  // }, [dispatch])
 
-  const restaurantList = useSelector(state => {
-    return state.restaurants.list
-  })
+  // const restaurantList = useSelector(state => {
+  //   return state.restaurants.list
+  // })
 
   // cancel reservations click handler
   const cancelReservationHandler = (e) => {

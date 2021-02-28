@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurants } from '../../store/restaurants';
 import ProfileReservations from './ProfileReservations';
 import ProfileSaved from './Saved';
 import './ProfilePage.css';
 
 export default function ProfilePage() {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
   //Scroll Navigation
@@ -24,6 +26,15 @@ export default function ProfilePage() {
     });
   }
 
+  // gather restaurants
+  useEffect(() => {
+    dispatch(getRestaurants());
+  }, [dispatch])
+
+  const restaurantList = useSelector(state => {
+    return state.restaurants.list
+  })
+
   return (
     <div className="profile-page">
       <div className="profile-header">
@@ -36,8 +47,8 @@ export default function ProfilePage() {
           <a onClick={savedClick}>Saved Restaurants</a>
         </div>
         <div className="profile-content">
-          <ProfileReservations userId={sessionUser?.id} />
-          <ProfileSaved />
+          <ProfileReservations userId={sessionUser?.id} restaurantList={restaurantList} />
+          <ProfileSaved restaurantList={restaurantList} />
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@
 .profile-body {
   display: flex;
   flex-direction: row;
+  padding-bottom: 48px;
 }
 
 /* header */
