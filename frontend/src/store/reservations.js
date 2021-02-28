@@ -4,7 +4,7 @@ import { csrfFetch } from "./csrf";
 // action types
 const POST_ONE = 'reservations/POST_ONE';
 const LOAD = 'reservations/LOAD';
-
+const CANCEL = 'reservations/CANCEL';
 
 //action creators
 const post = reservation => ({
@@ -15,6 +15,11 @@ const post = reservation => ({
 const load = reservations => ({
   type: LOAD,
   reservations
+})
+
+const cancel = reservationId => ({
+  type: CANCEL,
+  reservationId
 })
 
 //thunks
@@ -42,6 +47,16 @@ export const getReservations = userId => async (dispatch) => {
   }
 }
 
+export const cancelReservation = resId => async (dispatch) => {
+  const response = await csrfFetch(`/api/reservations/${resId}`, {
+    method: 'delete'
+  })
+
+  if (response.ok) {
+    dispatch(cancel(resId))
+  }
+}
+
 // Reducer
 const initialState = {
   reservationList: []
@@ -66,6 +81,16 @@ const reservationsReducer = (state = initialState, action) => {
       return {
         ...state,
         reservationList: userReservations,
+      }
+    }
+    case CANCEL: {
+      const updatedReservations = [...state.reservationList].filter(res => {
+        console.log('res.id: ', res.id, 'action.reservationId: ', action.reservationId)
+        return parseInt(res.id) !== parseInt(action.reservationId)
+      })
+      return {
+        ...state,
+        reservationList: [...updatedReservations]
       }
     }
     default:

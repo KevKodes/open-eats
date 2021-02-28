@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurants } from '../../store/restaurants';
 import { getReservations } from '../../store/reservations';
+import { cancelReservation } from '../../store/reservations';
 
 export default function ProfileReservations({ userId }) {
   const dispatch = useDispatch();
@@ -50,8 +51,8 @@ export default function ProfileReservations({ userId }) {
   })
 
   // cancel reservations click handler
-  const cancelReservation = (e) => {
-    console.log(`cancel reservation: ${e.target.value}`)
+  const cancelReservationHandler = (e) => {
+    dispatch(cancelReservation(e.target.value))
   }
 
   return (
@@ -92,7 +93,7 @@ export default function ProfileReservations({ userId }) {
               </div>
               <div className="profile-block-button">
                 <button 
-                  onClick={cancelReservation}
+                  onClick={cancelReservationHandler}
                   value={res.id}>
                   Cancel Reservation
                 </button>
