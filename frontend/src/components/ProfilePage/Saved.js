@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getFavorites } from "../../store/favorites";
-
+import { removeFavorite } from '../../store/favorites';
 
 export default function ProfileSaved({ userId, restaurantList }) {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ export default function ProfileSaved({ userId, restaurantList }) {
 
   // remove the restaurant from saved list
   const removeHandler = e => {
-    const restaurantId = e.target.value;
-    console.log(restaurantId);
+    const restId = e.target.id;
+    dispatch(removeFavorite(restId, userId))
   }
 
 
@@ -28,6 +28,7 @@ export default function ProfileSaved({ userId, restaurantList }) {
     savedContent = (
       savedList.map(saved => {
         const restaurant = restaurantList.find(rest => rest.id === saved.restaurantId)
+        const restaurantId = parseInt(restaurant.id);
         return (
           <div key={saved.restaurantId} className="profile-res-block">
             <div className="profile-block-left">
@@ -38,14 +39,14 @@ export default function ProfileSaved({ userId, restaurantList }) {
                 <div className="saved-rest-name">
                   {restaurant.name}
                 </div>
-                <div
+                <button
                   className="remove-restaurant"
                   onClick={removeHandler}
-                  value={restaurant.id}
+                  id={restaurantId}
                 >
-                  <i className="far fa-bookmark"></i>
-                  <span>Remove from saved restaurants</span>
-                </div>
+                  <i id={restaurantId} className="far fa-bookmark"></i>
+                  <span id={restaurantId}>Remove from saved restaurants</span>
+                </button>
                 <div className="saved-stars">
 
                 </div>

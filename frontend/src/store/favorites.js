@@ -17,9 +17,9 @@ const save = fav => ({
   fav
 })
 
-const remove = fav => ({
+const remove = restId => ({
   type: REMOVE,
-  fav
+  restId
 })
 
 // thunks
@@ -42,7 +42,6 @@ export const saveFavorite = (restId, userId) => async (dispatch) => {
   })
   if (res.ok) {
     const savedFav = await res.json();
-    console.log('saved fav returned in thunk: ', savedFav)
     dispatch(save(savedFav))
   }
 }
@@ -56,9 +55,8 @@ export const removeFavorite = (restId, userId) => async (dispatch) => {
     body: JSON.stringify({ restId, userId })
   })
   if (res.ok) {
-    const fav = await res.json();
-    console.log('delete returned in thunk: ', fav)
-    dispatch(remove(fav))
+    const favId = await res.json();
+    dispatch(remove(restId))
   }
 }
 
@@ -87,7 +85,13 @@ export default function favoritesReducer(state = initialState, action) {
       }
     }
     case REMOVE: {
-
+      const updatedFavs = [...state.list].filter(fav => {
+        return (parseInt(fav.restaurantId) !== parseInt(action.restId))
+      })
+      return {
+        ...state,
+        list: [...updatedFavs]
+      }
     }
     default:
       return state;

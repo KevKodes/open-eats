@@ -85,7 +85,6 @@ const reservationsReducer = (state = initialState, action) => {
     }
     case CANCEL: {
       const updatedReservations = [...state.reservationList].filter(res => {
-        console.log('res.id: ', res.id, 'action.reservationId: ', action.reservationId)
         return parseInt(res.id) !== parseInt(action.reservationId)
       })
       return {

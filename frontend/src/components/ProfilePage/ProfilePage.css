@@ -188,6 +188,8 @@
 
 .remove-restaurant {
   padding: 4px 0;
+  border: none;
+  background: transparent;
 }
 
 .remove-restaurant:hover {
