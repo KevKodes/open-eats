@@ -30,10 +30,10 @@ export default function ProfileSaved({ userId, restaurantList }) {
       savedList.map(saved => {
         const restaurant = restaurantList.find(rest => rest.id === saved.restaurantId)
         return (
-          <div key={saved.restaurantId} className="saved-rest-block">
-            <div className="saved-block-left">
-              <div className="saved-header-photo">
-                <img src={restaurant?.mainImageUrl} />
+          <div key={saved.restaurantId} className="profile-res-block">
+            <div className="profile-block-left">
+              <div className="profile-header-photo">
+                <img src={restaurant.mainImageUrl} />
               </div>
               <div className="saved-info">
                 <div className="saved-rest-name">
@@ -42,7 +42,7 @@ export default function ProfileSaved({ userId, restaurantList }) {
                 <div
                   className="remove-restaurant"
                   onClick={removeHandler}
-                  value={restaurant?.id}
+                  value={restaurant.id}
                 >
                   <i className="far fa-bookmark"></i>
                   <span>Remove from saved restaurants</span>
@@ -52,17 +52,19 @@ export default function ProfileSaved({ userId, restaurantList }) {
                 </div>
                 <div className="saved-info-bottom">
                   <div className="saved-info-cuisine">
-                    {restaurant?.cuisineType}
+                    {restaurant.cuisineType}
                   </div>
                   <div className="saved-info-city">
-                    {restaurant?.city}
+                    {restaurant.city}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="saved-block-right">
+            <div className="profile-block-button">
               <button>
-                <NavLink to={`/restaurants/${saved.restaurantId}`}>Reserve Now</NavLink>
+                <NavLink 
+                  to={`/restaurants/${saved.restaurantId}`}
+                  className="link">Reserve Now</NavLink>
               </button>
             </div>
 

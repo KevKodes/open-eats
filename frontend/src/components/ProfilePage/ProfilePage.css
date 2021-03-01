@@ -163,3 +163,43 @@
 .profile-block-none .link:hover {
   color: #bb232e;
 }
+
+.profile-block-button .link {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 12px;
+}
+
+.saved-rest-name {
+  font-size: 1.2rem;
+  font-weight: 550;
+}
+
+.saved-info-bottom {
+  display: flex;
+  flex-direction: row;
+}
+
+.remove-restaurant .fa-bookmark {
+  color: #da3743;
+  padding-right: 8px;
+}
+
+.remove-restaurant {
+  padding: 4px 0;
+}
+
+.remove-restaurant:hover {
+  cursor: pointer;
+  color: #da3743
+}
+
+.saved-info-cuisine {
+  padding-right: 8px;
+  border-right: .0625rem solid #d8d9db;
+}
+
+.saved-info-city {
+  padding-left: 8px;
+}
