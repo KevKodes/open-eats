@@ -19,8 +19,6 @@ const removeUser = () => {
 
 // thunks
 export const login = ({ credential, password }) => async (dispatch) => {
-    // const { credential, password } = user;
-    console.log('credential', credential, 'pass', password)
     const response = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify({
