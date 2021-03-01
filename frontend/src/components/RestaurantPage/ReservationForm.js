@@ -97,7 +97,7 @@ export default function ReservationForm({ restaurant, reservation }) {
         }
       })
     } else {
-      setErrors([...errors, 'Please login to make a reservation'])
+      setErrors(['Please login to make a reservation'])
     }
 
   }
