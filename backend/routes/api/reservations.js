@@ -24,7 +24,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
 // cancel a reservation
 router.delete('/:id', asyncHandler(async (req, res) => {
   const reservationId = req.params.id;
-  console.log('id in route: ', reservationId)
   const resId = await Reservation.destroy({
     where: {
       id: reservationId

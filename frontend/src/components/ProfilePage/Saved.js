@@ -14,7 +14,6 @@ export default function ProfileSaved({ userId, restaurantList }) {
   const savedList = useSelector(state => (
     state.favorites.list
   ));
-  console.log('saved list: ', savedList)
 
   // remove the restaurant from saved list
   const removeHandler = e => {

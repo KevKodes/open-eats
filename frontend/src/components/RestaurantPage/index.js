@@ -4,14 +4,28 @@ import { useParams, useLocation } from 'react-router-dom';
 import { getOneRestaurant } from '../../store/restaurants';
 import ReservationForm from './ReservationForm';
 import RestaurantContent from './RestaurantContent';
+import { saveFavorite } from '../../store/favorites'
+import { getFavorites } from '../../store/favorites'
 import Reviews from './Reviews';
 import './RestaurantPage.css';
 
 export default function RestaurantPage() {
+  const sessionUser = useSelector(state => state.session.user);
   const { restaurantId } = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
   const baseReservation = location?.state?.reservation;
+
+  // get the saved restaurants
+  useEffect(() => {
+    if (sessionUser) dispatch(getFavorites(sessionUser?.id))
+  }, [dispatch])
+  const savedList = useSelector(state => (
+    state.favorites.list
+  ));
+
+  const saved = savedList?.find(fav => (
+    parseInt(fav.userId) === parseInt(sessionUser?.id) && parseInt(fav.restaurantId) === parseInt(restaurantId)))
 
   // get the one restaurant based on id
   useEffect(() => {
@@ -24,7 +38,34 @@ export default function RestaurantPage() {
 
   //handler for saving restaurant to favorites
   const saveHandler = e => {
-    // console.log('add save functionality')
+    dispatch(saveFavorite(restaurantId, sessionUser?.id))
+  }
+
+  // control the save button: not there if not logged in, says saved if already
+  //    in the saved list
+  let buttonArea = null;
+  if (!sessionUser) {
+    buttonArea = null
+  } else {
+    // if logged in and saved
+    if (sessionUser && saved) {
+      buttonArea = (
+        <div className="restaurant-saved">
+          <i className="far fa-bookmark"></i>
+          <span>Restaurant saved!</span>
+        </div>
+      )
+    } else {
+      buttonArea = (
+        <div
+          className="save-restaurant"
+          onClick={saveHandler}
+        >
+          <i className="far fa-bookmark"></i>
+          <span>Save this restaurant</span>
+        </div>
+      )
+    }
   }
 
   return (
@@ -33,13 +74,8 @@ export default function RestaurantPage() {
       <div className="restaurant-body">
         <div className="restaurant-header">
           <img src={restaurant.mainImageUrl} />
-          <div 
-          className="save-restaurant"
-          onClick={saveHandler}
-          >
-            <i className="far fa-bookmark"></i>
-            <span>Save this restaurant</span>
-          </div>
+          {buttonArea}
+
         </div>
         <div className="main-content">
           <RestaurantContent restaurant={restaurant} />

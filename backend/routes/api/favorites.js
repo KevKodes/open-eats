@@ -15,4 +15,26 @@ router.get('/:userId', asyncHandler(async (req, res) => {
   return res.json(userFavorites)
 }))
 
+// add a favorite restaurant to table
+router.post('/', asyncHandler(async (req, res) => {
+  const { userId, restId } = req.body;
+  const confirmed = await Favorite.create({
+    userId,
+    restaurantId: restId
+  })
+  return res.json(confirmed)
+}))
+
+// remove a favorite
+router.delete('/', asyncHandler(async (req, res) => {
+  const { userId, restId } = req.body;
+  const fav = await Favorite.destroy({
+    where: {
+      userId,
+      restaurantId: restId
+    }
+  })
+  return res.json(fav)
+}))
+
 module.exports = router;

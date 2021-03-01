@@ -31,6 +31,7 @@
   border: 1px solid rgba(0,0,0,0.2);
 }
 
+.restaurant-saved i,
 .save-restaurant i {
   margin-right: 4px;
 }
@@ -39,6 +40,16 @@
   cursor: pointer;
   background-color: #da3743;
   color: white;
+}
+
+.restaurant-saved {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+  border-radius: 3px;
+  padding: 8px;
+  border: 2px solid rgb(218, 55, 67);
 }
 
 .main-content {
