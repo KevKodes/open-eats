@@ -14,7 +14,7 @@ save their favorite restaurants to their profile.
 
 <p>&nbsp;</p>
 
-![Home Page]('./readme-assets/96C205EF-4829-4739-91C5-687A7BF54FC5_1_105_c.jpeg')
+![Home Page](./readme-assets/96C205EF-4829-4739-91C5-687A7BF54FC5_1_105_c.jpeg)
 
 ## Technologies used
 
@@ -56,7 +56,7 @@ save their favorite restaurants to their profile.
 
 ---
 
-![Restaurant Page]('./readme-assets/A4E0F1B8-273E-463A-A6E0-9B42B0D2BB48_1_105_c.jpeg')
+![Restaurant Page](./readme-assets/A4E0F1B8-273E-463A-A6E0-9B42B0D2BB48_1_105_c.jpeg)
 
 ### React and Redux 
 
