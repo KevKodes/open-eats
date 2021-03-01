@@ -58,22 +58,12 @@ save their favorite restaurants to their profile.
 
 
 ### AJAX for the reviews
-A key feature that shows our team's technical abilities is using AJAX on the reviews portion of our site.  A user
-is able to navigate to a comic and add a review for that comic.  Without refreshing, the review shows up on the page and the user then has the ability to edit and remove that review after having created it.  We accomplished this by using api routes. When the user clicks "submit review" a fetch call is made to an api which updates our database with the review and then sends back a JSON review object.  The JSON object is parsed and the information for the review is then added to the document as shown in the image below.
 
 
 ![Reviews]()
 ![Reviews]()
 
 
-
-
-### Custom backgrounds for specific comics
-
-
-
-- Creating the search bar logic querying for all the database information was definitely one of toughest implementations.
-- Using AJAX to create a dynamic and responsive UI for the Website was one of the challenges we accomplished on this project.
 <p>&nbsp;</p>
 
 ## Obstacles
@@ -87,9 +77,7 @@ application became one of the biggest learning opportunities. Through trial and 
 
 <p>&nbsp;</p>
 
-### User Reviews
-
-Using AJAX to add user reviews was our first AJAX implementation of dynamic UI and was hard to make it work.
+### Styling
 
 Styling the the website pages using raw CSS was another obstacle we had. There are hundred of lines of code just for the CSS styling. We use mixins Pug templates in order to reuse most of the code for the styling and the html/pug. This save us probably hundred of lines code as well.
 
@@ -107,3 +95,4 @@ This project was a sprint. A couple features I would like to implement in the fu
 - Adding the ablility for users to create reviews and ratings of restaurants.
 - Updating the splash page to include multiple rows of restaurants of various types.
 - Adding a search modal to allow users to search from any page on the site.
+- Creating buttons for restaurant rows on the splash page for carousel functions in lieu of horizontal scrolling.
