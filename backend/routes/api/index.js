@@ -4,12 +4,14 @@ const usersRouter = require('./users');
 const restaurantsRouter = require('./restaurants');
 const photosRouter = require('./photos');
 const reservationsRouter = require('./reservations');
+const favoritesRouter = require('./favorites');
 
 router.use('/session', sessionRouter);
 router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
 router.use('/photos', photosRouter);
 router.use('/reservations', reservationsRouter);
+router.use('/favorites', favoritesRouter);
 
 router.get('/hello/world', function (req, res) {
     res.cookie('XSRF-TOKEN', req.csrfToken());

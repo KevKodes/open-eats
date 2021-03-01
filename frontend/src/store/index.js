@@ -5,12 +5,14 @@ import sessionReducer from './session';
 import restaurantReducer from './restaurants';
 import photoReducer from "./photos";
 import reservationsReducer from "./reservations";
+import favoritesReducer from "./favorites";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   restaurants: restaurantReducer,
   photos: photoReducer,
   reservations: reservationsReducer,
+  favorites: favoritesReducer,
 });
 
 let enhancer;

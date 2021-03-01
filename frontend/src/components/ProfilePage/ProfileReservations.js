@@ -41,15 +41,6 @@ export default function ProfileReservations({ userId, restaurantList }) {
     }
   })
 
-  // // gather restaurants
-  // useEffect(() => {
-  //   dispatch(getRestaurants());
-  // }, [dispatch])
-
-  // const restaurantList = useSelector(state => {
-  //   return state.restaurants.list
-  // })
-
   // cancel reservations click handler
   const cancelReservationHandler = (e) => {
     dispatch(cancelReservation(e.target.value))

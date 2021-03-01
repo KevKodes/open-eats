@@ -48,7 +48,7 @@ export default function ProfilePage() {
         </div>
         <div className="profile-content">
           <ProfileReservations userId={sessionUser?.id} restaurantList={restaurantList} />
-          <ProfileSaved restaurantList={restaurantList} />
+          <ProfileSaved restaurantList={restaurantList} userId={sessionUser?.id} />
         </div>
       </div>
     </div>
