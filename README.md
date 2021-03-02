@@ -83,11 +83,42 @@ Styling the the website pages using raw CSS was another obstacle we had. There a
 
 ## Code Samples
 
+```javascript
+// Handle a form submission to save the data to state
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const restaurant = restaurantList.filter(rest => (
+    rest.name.toLowerCase() === searchString.toLowerCase()
+  ))[0]
+
+  if (!restaurant) return setErrors(["Please select a valid restaurant name."])
+
+  const reservation = {
+    reservationTime,
+    reservationDate,
+    partySize
+  }
+
+  // send to the restaurant page but have the details of the form saved
+  history.push({
+    pathname: `/restaurants/${restaurant.id}`,
+    state: {
+      reservation
+    }
+  })
+}
+
+// Use the saved data to auto fill a form in another component
+const location = useLocation();
+const baseReservation = location?.state?.reservation;
+
+```
 
 
 ## Future Improvements
 
-This project was a sprint. A couple features I would like to implement in the future are:
+This project was a sprint. Some features I would like to implement in the future are:
 - Increasing the amount of data in the database by either seeding more data or connecting to an external API.
 - Linking to the google maps API to show a mini map of individual restaurant locations.
 - Adding the ablility for users to create reviews and ratings of restaurants.
