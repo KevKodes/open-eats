@@ -144,7 +144,10 @@ let buttonArea = null;
 
 ### Styling
 
-Styling the the website pages using raw CSS was another obstacle we had. There are hundred of lines of code just for the CSS styling. We use mixins Pug templates in order to reuse most of the code for the styling and the html/pug. This save us probably hundred of lines code as well.
+Styling the website by hand was one of the most time intensive aspects of the
+project. However, using React components in multiple locations allowed for 
+duplicating styles that both sped up the process and led to stylistic 
+continuity across the site.
 
 <p>&nbsp;</p>
 
