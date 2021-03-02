@@ -71,10 +71,48 @@ save their favorite restaurants to their profile.
 
 ### Managing state with Redux
 Prior to this project, I only had a few days of experience with Redux. As such, managing the shape of the state in my 
-application became one of the biggest learning opportunities. Through trial and error, I 
+application became one of the biggest learning opportunities.
+
+```javascript
+export default function favoritesReducer(state = initialState, action) {
+  switch (action.type) {
+    case LOAD: {
+      const userFavs = [];
+      action.favoritesList.forEach(fav => {
+        userFavs.push(fav)
+      })
+      return {
+        ...state,
+        list: [...userFavs]
+      }
+    }
+    case SAVE: {
+      const newFav = [action.fav]
+      return {
+        ...state,
+        list: [...newFav]
+      }
+    }
+    case REMOVE: {
+      const updatedFavs = [...state.list].filter(fav => {
+        return (parseInt(fav.restaurantId) !== parseInt(action.restId))
+      })
+      return {
+        ...state,
+        list: [...updatedFavs]
+      }
+    }
+    default:
+      return state;
+  }
+
+}
+```
 
 
 ### Controling the components displayed based on user status
+I was also able to take advantage of React's functionality to use conditionals
+to display certain content based on user status and the user's associated state.
 
 ```javascript
 let buttonArea = null;
