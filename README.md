@@ -58,13 +58,7 @@ save their favorite restaurants to their profile.
 
 ![Restaurant Page](./readme-assets/A4E0F1B8-273E-463A-A6E0-9B42B0D2BB48_1_105_c.jpeg)
 
-### React and Redux 
-
-
-
-<p>&nbsp;</p>
-
-## Obstacles
+### Obstacles
 
 ---
 
