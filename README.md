@@ -73,6 +73,35 @@ save their favorite restaurants to their profile.
 Prior to this project, I only had a few days of experience with Redux. As such, managing the shape of the state in my 
 application became one of the biggest learning opportunities. Through trial and error, I 
 
+
+### Controling the components displayed based on user status
+
+```javascript
+let buttonArea = null;
+  if (!sessionUser) {
+    buttonArea = null
+  } else {
+    if (sessionUser && saved) {
+      buttonArea = (
+        <div className="restaurant-saved">
+          <i className="far fa-bookmark"></i>
+          <span>Restaurant saved!</span>
+        </div>
+      )
+    } else {
+      buttonArea = (
+        <div
+          className="save-restaurant"
+          onClick={saveHandler}
+        >
+          <i className="far fa-bookmark"></i>
+          <span>Save this restaurant</span>
+        </div>
+      )
+    }
+  }
+```
+
 <p>&nbsp;</p>
 
 ### Styling
