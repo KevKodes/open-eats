@@ -9,7 +9,7 @@
 ---
 
 OpenEats is a clone of OpenTable. Users can view and search for restaurants in the database 
-by name or cuising type. Signing up allows users to make reservations, see their dining history, and
+by name or cuisine type. Signing up allows users to make reservations, view their dining history, and
 save their favorite restaurants to their profile.
 
 <p>&nbsp;</p>
