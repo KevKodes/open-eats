@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/KevKodes/authenticate-me/issues"
   },
-  "homepage": "https://github.com/KevKodes/authenticate-me#readme"
+  "homepage": "https://github.com/KevKodes/authenticate-me#readme",
+  "dependencies": {
+    "postgresql": "0.0.1"
+  }
 }
