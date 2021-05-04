@@ -10,7 +10,7 @@ import Reviews from './Reviews';
 import './RestaurantPage.css';
 
 export default function RestaurantPage() {
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session?.user);
   const { restaurantId } = useParams();
   const location = useLocation();
   const dispatch = useDispatch();
