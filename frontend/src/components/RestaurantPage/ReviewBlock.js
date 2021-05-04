@@ -15,8 +15,8 @@ const ReviewBlock = ({ review }) => {
   return (
     <div className="review-block-wrapper">
       <div className="review-block-header">
-        <div className="avatar">
-          OE
+        <div className="review-block-initials">
+          {reviewer.firstName[0] + reviewer.lastName[0]}
         </div>
         <div className="review-block-username">
           {reviewer.firstName} {reviewer.lastName}
@@ -25,7 +25,7 @@ const ReviewBlock = ({ review }) => {
           New York Area
         </div>
         <div className="review-block-numReviews">
-          <i className="far fa-comment-alt"></i>
+          <i className="far fa-comment-alt fa-xs"></i>
           {numReviews} reviews
         </div>
       </div>
