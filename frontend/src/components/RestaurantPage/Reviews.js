@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ReviewBlock from './ReviewBlock';
 import StarRatings from 'react-star-ratings';
+import ReviewFormModal from '../ReviewFormModal';
 import './Reviews.css';
 
 export default function Reviews() {
   const reviews = useSelector(state => state.reviews?.restaurantReviews)
-  const sessionUser = useSelector(state => state.session?.user);
   const [overallRating, setOverallRating] = useState(0)
   const [overallAverage, setOverallAverage] = useState(0); //to set the star component
   const [foodRating, setFoodRating] = useState(0)
   const [serviceRating, setServiceRating] = useState(0)
   const [ambienceRating, setAmbienceRating] = useState(0)
-  const [errors, setErrors] = useState([])
   // console.log('reviews returned to the component: ', reviews)
 
   useEffect(() => {
@@ -42,15 +41,6 @@ export default function Reviews() {
     }
 
   }, [reviews])
-
-  const addReview = () => {
-    if (!sessionUser) {
-      setErrors(['Please sign in to submit a review'])
-    } else {
-      console.log('open the review modal')
-
-    }
-  }
 
   return (
     <div className="reviews-content">
@@ -102,14 +92,7 @@ export default function Reviews() {
         <h3 className="review-header-bottom">Be the first to review this restaurant!</h3>
       )}
         <div className="review-header-bottom">
-          <ul className='res-form-errors'>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-          <div className="add-review">
-            <button onClick={addReview}>Add a Review</button>
-          </div>
+          <ReviewFormModal />
         </div>
       <div className="reviews-body">
         {reviews && reviews.map((review, idx) => (
