@@ -1,6 +1,13 @@
+import React from 'react';
+import { getReviews } from '../../store/reviews';
 import './Reviews.css';
 
-export default function Reviews() {
+export default function Reviews({ restId }) {
+  const reviews = state.reviews
+
+  useEffect(() => {
+    dispatch(getReviews(restId));
+  }, [dispatch])
 
   return (
     <div className="reviews-content">

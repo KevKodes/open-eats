@@ -81,7 +81,7 @@ export default function RestaurantContent({ restaurant }) {
         </div>
       </div>
       <div className="reviews" id="reviews">
-        <Reviews />
+        <Reviews restId = {restId} />
       </div>
     </div>
   )
