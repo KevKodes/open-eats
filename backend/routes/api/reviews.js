@@ -13,7 +13,7 @@ router.get('/:restId', asyncHandler(async (req, res) => {
       restaurantId
     }
   })
-  // order the reviews by date here
+  // order the reviews by date here (newest first)
 
   //
   return res.json(reviews)
