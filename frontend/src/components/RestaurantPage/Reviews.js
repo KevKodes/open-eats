@@ -41,6 +41,10 @@ export default function Reviews() {
 
   }, [reviews])
 
+  const addReview = () => {
+    console.log('open the review modal')
+  }
+
   return (
     <div className="reviews-content">
       <div className="reviews-title">
@@ -84,6 +88,9 @@ export default function Reviews() {
         <div className="reviews-recommendation">
           <i className="far fa-thumbs-up fa-xs"></i>
           <p><strong>95% of people</strong> would recommend it to a friend</p>
+        </div>
+        <div className="add-review">
+          <button onClick={addReview}>Create a Review</button>
         </div>
       </div>
       <div className="reviews-body">

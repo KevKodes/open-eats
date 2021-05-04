@@ -10,6 +10,9 @@
 .reviews-header {
   border-bottom: 1px solid #d8d9db;
   padding-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reviews-overall {
@@ -42,6 +45,22 @@
 .reviews-recommendation i {
   margin-right: 8px;
   align-self: center;
+}
+
+.add-review button {
+  border: 1px solid #d8d9db;
+  border-radius: 2px;
+  width: 18rem;
+  font-size: 16px;
+  padding: 16px;
+  margin: 16px;
+  background-color: white;
+}
+
+.add-review button:hover {
+  border: 2px solid #DA3743;
+  margin: 15px 16px;
+  cursor: pointer;
 }
 
 .reviews-body {
