@@ -32,10 +32,25 @@ const ReviewBlock = ({ review }) => {
       <div className="review-block-content">
         <div className="review-block-rating">
           <div className="stars-line">
-
+            ADD STARS HERE
           </div>
           <div className="rating-line">
-
+            <div className="rating-line-section">
+              <p>Overall</p>
+              <div>{review.foodRating}</div>
+            </div>
+            <div className="rating-line-section rating-line-detail">
+              <p>Food</p>
+              <div>{review.foodRating}</div>
+            </div>
+            <div className="rating-line-section rating-line-detail">
+              <p>Service</p>
+              <div>{review.serviceRating}</div>
+            </div>
+            <div className="rating-line-section rating-line-detail">
+              <p>Ambience</p>
+              <div>{review.ambienceRating}</div>
+            </div>
           </div>
         </div>
         <p>{review.description}</p>

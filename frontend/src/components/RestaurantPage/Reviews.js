@@ -12,7 +12,7 @@ export default function Reviews() {
   console.log('reviews returned to the component: ', reviews)
 
   useEffect(() => {
-    if (reviews) {
+    if (reviews?.length) {
       let overall = [];
       let service = [];
       let food = [];
