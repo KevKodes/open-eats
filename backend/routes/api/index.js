@@ -5,13 +5,14 @@ const restaurantsRouter = require('./restaurants');
 const photosRouter = require('./photos');
 const reservationsRouter = require('./reservations');
 const favoritesRouter = require('./favorites');
+const reviewsRouter = require('./reviews');
 
 router.use('/session', sessionRouter);
 router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
 router.use('/photos', photosRouter);
 router.use('/reservations', reservationsRouter);
-router.use('/favorites', favoritesRouter);
+router.use('/reviews', reviewsRouter);
 
 router.get('/hello/world', function (req, res) {
     res.cookie('XSRF-TOKEN', req.csrfToken());
