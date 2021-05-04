@@ -4,7 +4,7 @@ const LOAD = 'photos/LOAD';
 //action creators
 const load =  photos => ({
   type: LOAD,
-   photos
+  photos
 })
 
 //thunks

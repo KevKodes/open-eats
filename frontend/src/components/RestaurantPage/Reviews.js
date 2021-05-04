@@ -1,18 +1,17 @@
-import React from 'react';
-import { getReviews } from '../../store/reviews';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import './Reviews.css';
 
-export default function Reviews({ restId }) {
-  const reviews = state.reviews
+export default function Reviews() {
+  const reviews = useSelector(state => state.reviews?.restaurantReviews)
 
-  useEffect(() => {
-    dispatch(getReviews(restId));
-  }, [dispatch])
 
   return (
     <div className="reviews-content">
-      <div className="reviews-title">
-        <h2>What people are saying</h2>
+      <div className="reviews-header">
+        <div className="reviews-title">
+          <h2>What people are saying</h2>
+        </div>
       </div>
       <div className="reviews-body">
         <p>Reviews coming soon.</p>

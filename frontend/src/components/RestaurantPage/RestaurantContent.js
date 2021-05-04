@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPhotos } from '../../store/photos';
+import { getReviews } from '../../store/reviews';
 import PhotoComponent from './PhotoComponent';
 import Reviews from './Reviews';
 import './RestaurantContent.css'
@@ -17,6 +18,10 @@ export default function RestaurantContent({ restaurant }) {
 
   useEffect(() => {
     dispatch(getPhotos(restId));
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getReviews(restId));
   }, [dispatch])
 
   const photoList = useSelector(state => {
@@ -81,7 +86,7 @@ export default function RestaurantContent({ restaurant }) {
         </div>
       </div>
       <div className="reviews" id="reviews">
-        <Reviews restId = {restId} />
+        <Reviews />
       </div>
     </div>
   )

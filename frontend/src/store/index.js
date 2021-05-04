@@ -6,6 +6,7 @@ import restaurantReducer from './restaurants';
 import photoReducer from "./photos";
 import reservationsReducer from "./reservations";
 import favoritesReducer from "./favorites";
+import reviewsReducer from "./reviews";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   photos: photoReducer,
   reservations: reservationsReducer,
   favorites: favoritesReducer,
+  reviews: reviewsReducer,
 });
 
 let enhancer;
