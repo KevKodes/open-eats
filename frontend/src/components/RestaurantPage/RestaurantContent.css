@@ -39,14 +39,13 @@
 .resContent-name {
   border-bottom: 1px solid #d8d9db;
   font-size: 48px;
-  padding: 2rem;
-  margin: 1rem;
+  padding: 3rem;
   line-height: 56px;
   font-weight: 700;
 }
 
 .resContent-info {
-  margin: 1rem 0;
+  margin: 2rem 0;
   display: flex;
   flex-direction: row;
 }
@@ -63,10 +62,15 @@
   margin: 0 16px;
 }
 
+.resContent-reviews-val {
+  margin-right: 24px;
+}
+
 .resContent-cuisine i,
 .resContent-reviews p,
 .resContent-reviews .fa-comment-alt {
   padding-right: 8px;
+  align-self: center;
 }
 
 .resContent-review-stars {
@@ -81,8 +85,8 @@
 
 .resContent-description {
   border-bottom: 1px solid #d8d9db;
-  margin: 1rem 0;
-  padding: 1rem 0;
+  margin: 0 0 1rem 0;
+  padding: 0 0 1rem 0;
 }
 
 .resContent-photos {
