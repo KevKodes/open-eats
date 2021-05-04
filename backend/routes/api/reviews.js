@@ -6,13 +6,16 @@ const router = express.Router();
 
 // Get the reviews for one restaurant
 router.get('/:restId', asyncHandler(async (req, res) => {
-  const restId = req.params.restId;
+  const restaurantId = req.params.restId;
 
   const reviews = await Review.findAll({
     where: {
-      restId
+      restaurantId
     }
   })
+  // order the reviews by date here
+
+  //
   return res.json(reviews)
 }))
 

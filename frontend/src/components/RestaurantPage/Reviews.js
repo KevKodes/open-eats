@@ -4,7 +4,7 @@ import './Reviews.css';
 
 export default function Reviews() {
   const reviews = useSelector(state => state.reviews?.restaurantReviews)
-
+  console.log('reviews returned to the component: ', reviews)
 
   return (
     <div className="reviews-content">
@@ -15,6 +15,7 @@ export default function Reviews() {
       </div>
       <div className="reviews-body">
         <p>Reviews coming soon.</p>
+
       </div>
     </div>
   )

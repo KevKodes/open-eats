@@ -12,6 +12,7 @@ router.use('/restaurants', restaurantsRouter);
 router.use('/users', usersRouter);
 router.use('/photos', photosRouter);
 router.use('/reservations', reservationsRouter);
+router.use('/favorites', favoritesRouter);
 router.use('/reviews', reviewsRouter);
 
 router.get('/hello/world', function (req, res) {
