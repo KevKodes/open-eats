@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import ReviewBlock from './ReviewBlock';
+import StarRatings from 'react-star-ratings';
 import './Reviews.css';
 
 export default function Reviews() {
@@ -45,7 +46,14 @@ export default function Reviews() {
 
           </div>
           <div className="reviews-overall-val">
-            {overallRating} based on recent reviews
+            <StarRatings
+              rating={overallRating}
+              starRatedColor="#DA3743"
+              numberOfStars={5}
+              starDimension="20px"
+              starSpacing="2px"
+              name='rating'
+            /> based on recent reviews
           </div>
         </div>
         <div className="reviews-breakdown">

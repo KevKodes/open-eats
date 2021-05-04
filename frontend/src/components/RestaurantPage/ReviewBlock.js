@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import StarRatings from 'react-star-ratings';
 import './ReviewBlock.css';
 
 const ReviewBlock = ({ review }) => {
@@ -32,7 +33,14 @@ const ReviewBlock = ({ review }) => {
       <div className="review-block-content">
         <div className="review-block-rating">
           <div className="stars-line">
-            ADD STARS HERE
+            <StarRatings
+              rating={review.overallRating}
+              starRatedColor="#DA3743"
+              numberOfStars={5}
+              starDimension="20px"
+              starSpacing="2px"
+              name='rating'
+            />
           </div>
           <div className="rating-line">
             <div className="rating-line-section">
