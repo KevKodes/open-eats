@@ -4,17 +4,16 @@ import { getPhotos } from '../../store/photos';
 import { getReviews } from '../../store/reviews';
 import PhotoComponent from './PhotoComponent';
 import Reviews from './Reviews';
+import StarRatings from 'react-star-ratings';
 import './RestaurantContent.css'
 
 export default function RestaurantContent({ restaurant }) {
   const restId = restaurant.id;
   const dispatch = useDispatch();
-  const [numReviews, setNumReviews] = useState(20)
-
-  useEffect(() => {
-    const randomNum = Math.floor(Math.random() * 30)
-    setNumReviews(randomNum)
-  }, [])
+  const reviews = useSelector(state => state.reviews?.restaurantReviews)
+  const [numReviews, setNumReviews] = useState(0);
+  const [overallRating, setOverallRating] = useState(0)
+  const [overallAverage, setOverallAverage] = useState(0); //to set the star component
 
   useEffect(() => {
     dispatch(getPhotos(restId));
@@ -23,6 +22,20 @@ export default function RestaurantContent({ restaurant }) {
   useEffect(() => {
     dispatch(getReviews(restId));
   }, [dispatch])
+
+  useEffect(() => {
+    if (reviews?.length) {
+      let overall = [];
+      reviews.forEach(rev => {
+        overall.push(rev.overallRating);
+      });
+      const overallAvg = overall.reduce((acc, cv) => acc + cv) / overall.length;
+      setOverallAverage(overallAvg)
+      setOverallRating(overallAvg.toFixed(1));
+      setNumReviews(reviews.length)
+    }
+
+  }, [reviews])
 
   const photoList = useSelector(state => {
     return state.photos.photoList;
@@ -59,12 +72,15 @@ export default function RestaurantContent({ restaurant }) {
       </div>
       <div className="resContent-info">
         <div className="resContent-reviews">
-          <div className="resContent-review-stars">
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star"></i>
-            <i className="fas fa-star-half-alt"></i>
-            <i className="far fa-star"></i>
+          <div className="resContent-reviews-val">
+            <StarRatings
+              rating={overallAverage}
+              starRatedColor="#DA3743"
+              numberOfStars={5}
+              starDimension="20px"
+              starSpacing="2px"
+              name='rating'
+            /> {overallRating}
           </div>
           <i className="far fa-comment-alt"></i>
           <p>{`${numReviews} reviews`}</p>

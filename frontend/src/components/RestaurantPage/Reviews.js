@@ -6,11 +6,12 @@ import './Reviews.css';
 
 export default function Reviews() {
   const reviews = useSelector(state => state.reviews?.restaurantReviews)
-  const [overallRating, setOverallRating] = useState(5)
-  const [foodRating, setFoodRating] = useState(5.0)
-  const [serviceRating, setServiceRating] = useState(5.0)
-  const [ambienceRating, setAmbienceRating] = useState(5.0)
-  console.log('reviews returned to the component: ', reviews)
+  const [overallRating, setOverallRating] = useState(0)
+  const [overallAverage, setOverallAverage] = useState(0); //to set the star component
+  const [foodRating, setFoodRating] = useState(0)
+  const [serviceRating, setServiceRating] = useState(0)
+  const [ambienceRating, setAmbienceRating] = useState(0)
+  // console.log('reviews returned to the component: ', reviews)
 
   useEffect(() => {
     if (reviews?.length) {
@@ -25,11 +26,17 @@ export default function Reviews() {
         ambience.push(rev.ambienceRating);
       });
       const overallAvg = overall.reduce((acc, cv) => acc + cv) / overall.length;
-      console.log('average overall rating: ', overallAvg)
-      setOverallRating(Math.round(overallAvg * 10) / 10);
+      setOverallAverage(overallAvg)
+      setOverallRating(overallAvg.toFixed(1));
+
       const foodAvg = food.reduce((acc, cv) => acc + cv) / food.length
-      console.log('average food rating: ', foodAvg)
-      setFoodRating(Math.round(foodAvg * 10) / 10);
+      setFoodRating(foodAvg.toFixed(1));
+
+      const serviceAvg = service.reduce((acc, cv) => acc + cv) / service.length
+      setServiceRating(serviceAvg.toFixed(1));
+
+      const ambienceAvg = ambience.reduce((acc, cv) => acc + cv) / ambience.length
+      setAmbienceRating(ambienceAvg.toFixed(1));
     }
 
   }, [reviews])
@@ -47,13 +54,13 @@ export default function Reviews() {
           </div>
           <div className="reviews-overall-val">
             <StarRatings
-              rating={overallRating}
+              rating={overallAverage}
               starRatedColor="#DA3743"
               numberOfStars={5}
               starDimension="20px"
               starSpacing="2px"
               name='rating'
-            /> based on recent reviews
+            /> {overallRating} based on recent reviews
           </div>
         </div>
         <div className="reviews-breakdown">
@@ -69,6 +76,14 @@ export default function Reviews() {
             <div>{ambienceRating}</div>
             <p>Ambience</p>
           </div>
+        </div>
+        <div className="reviews-recommendation">
+          <i className="fas fa-volume-up"></i>
+          <p>Moderate noise</p>
+        </div>
+        <div className="reviews-recommendation">
+          <i className="far fa-thumbs-up fa-xs"></i>
+          <p><strong>95% of people</strong> would recommend it to a friend</p>
         </div>
       </div>
       <div className="reviews-body">

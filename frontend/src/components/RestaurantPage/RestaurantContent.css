@@ -62,6 +62,10 @@
   margin: 0 16px;
 }
 
+.resContent-reviews-val {
+  margin-right: 24px;
+}
+
 .resContent-cuisine i,
 .resContent-reviews p,
 .resContent-reviews .fa-comment-alt {

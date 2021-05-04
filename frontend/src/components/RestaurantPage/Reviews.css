@@ -7,8 +7,18 @@
   border-bottom: 1px solid #d8d9db;
 }
 
+.reviews-header {
+  border-bottom: 1px solid #d8d9db;
+  padding-bottom: 64px;
+}
+
+.reviews-overall {
+  margin: 8px 0 16px;
+}
+
 .reviews-breakdown {
   display: flex;
+  margin: 16px 0;
 }
 
 .reviews-breakdown-section {
@@ -21,6 +31,17 @@
 .service-rating {
   border-left: 1px solid #d8d9db;
   border-right: 1px solid #d8d9db;
+}
+
+.reviews-recommendation {
+  margin-top: 16px;
+  display: flex;
+  color: #6F737B
+}
+
+.reviews-recommendation i {
+  margin-right: 8px;
+  align-self: center;
 }
 
 .reviews-body {

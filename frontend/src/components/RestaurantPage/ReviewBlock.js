@@ -7,6 +7,11 @@ const ReviewBlock = ({ review }) => {
   const sessionUser = useSelector(state => state.session?.user);
   const [reviewer, setReviewer] = useState({ firstName: 'Kevin', lastName: 'Pitzer'})
 
+  // randomized colors for the initials
+  const colors = ['#BB6ACD', '#D86441', '#Df4E96', '#6C8AE4']
+  const colorIndex = Math.floor(Math.random() * 4)
+  const color = colors[colorIndex]
+
   // get the user's name that made the review
 
 
@@ -16,7 +21,7 @@ const ReviewBlock = ({ review }) => {
   return (
     <div className="review-block-wrapper">
       <div className="review-block-header">
-        <div className="review-block-initials">
+        <div className="review-block-initials" style={{backgroundColor:color}}>
           {reviewer.firstName[0] + reviewer.lastName[0]}
         </div>
         <div className="review-block-username">
@@ -45,7 +50,7 @@ const ReviewBlock = ({ review }) => {
           <div className="rating-line">
             <div className="rating-line-section">
               <p>Overall</p>
-              <div>{review.foodRating}</div>
+              <div>{review.overallRating}</div>
             </div>
             <div className="rating-line-section rating-line-detail">
               <p>Food</p>
@@ -61,7 +66,7 @@ const ReviewBlock = ({ review }) => {
             </div>
           </div>
         </div>
-        <p>{review.description}</p>
+        <div className="review-block-description">{review.description}</div>
       </div>
     </div>
   )
