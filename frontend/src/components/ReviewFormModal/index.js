@@ -8,10 +8,15 @@ export default function ReviewFormModal() {
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([])
   const sessionUser = useSelector(state => state.session?.user);
+  const reviews = useSelector(state => state.reviews?.restaurantReviews)
 
   useEffect(() => {
     setErrors([])
   }, [sessionUser])
+
+  useEffect(() => {
+    setShowModal(false)
+  }, [reviews])
 
   const addReview = () => {
     if (!sessionUser) {
