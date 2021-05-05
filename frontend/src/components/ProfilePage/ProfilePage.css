@@ -36,7 +36,8 @@
 }
 
 .profile-nav a:hover {
-  color: #333
+  color: #da3743;
+  cursor: pointer;
 }
 
 
