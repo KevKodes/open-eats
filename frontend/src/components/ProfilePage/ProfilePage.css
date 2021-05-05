@@ -97,6 +97,11 @@
   font-weight: 550;
 }
 
+.profile-name a {
+  text-decoration: none;
+  color: #2d333f;
+}
+
 .profile-info {
   display: flex;
   flex-direction: row;
@@ -175,6 +180,11 @@
 .saved-rest-name {
   font-size: 1.2rem;
   font-weight: 550;
+}
+
+.saved-rest-name a {
+  text-decoration: none;
+  color: #2d333f;
 }
 
 .saved-info-bottom {
