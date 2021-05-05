@@ -51,4 +51,5 @@
 #profile-dropdown-signout:hover {
   background: rgba(0,0,0,.05);
   color: #da3743;
+  cursor: pointer;
 }

@@ -37,7 +37,7 @@ export default function ProfileSaved({ userId, restaurantList }) {
               </div>
               <div className="saved-info">
                 <div className="saved-rest-name">
-                  {restaurant.name}
+                  <a href={`/restaurants/${restaurantId}`}>{restaurant.name}</a>
                 </div>
                 <button
                   className="remove-restaurant"

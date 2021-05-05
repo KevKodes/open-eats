@@ -14,9 +14,6 @@ router.get('/:restId', asyncHandler(async (req, res) => {
     },
     include: User
   })
-  // order the reviews by date here (newest first)
-
-  //
   return res.json(reviews)
 }))
 

@@ -60,7 +60,7 @@ export default function ProfileReservations({ userId, restaurantList }) {
               </div>
               <div className="profile-header-content">
                 <div className="profile-name">
-                  {reservRestaurant?.name}
+                  <a href={`/restaurants/${res.restaurantId}`}>{reservRestaurant?.name}</a>
                 </div>
                 <div className="profile-info">
                   <div className="profile-info-date">
@@ -115,7 +115,7 @@ export default function ProfileReservations({ userId, restaurantList }) {
             </div>
             <div className="profile-header-content">
               <div className="profile-name">
-                {reservRestaurant?.name}
+                <a href={`/restaurants/${res.restaurantId}`}>{reservRestaurant?.name}</a>
               </div>
               <div className="profile-info">
                 <div className="profile-info-date">

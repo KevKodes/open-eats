@@ -36,7 +36,8 @@
 }
 
 .profile-nav a:hover {
-  color: #333
+  color: #da3743;
+  cursor: pointer;
 }
 
 
@@ -94,6 +95,11 @@
   line-height: 28px;
   margin: 0 0 4px;
   font-weight: 550;
+}
+
+.profile-name a {
+  text-decoration: none;
+  color: #2d333f;
 }
 
 .profile-info {
@@ -174,6 +180,11 @@
 .saved-rest-name {
   font-size: 1.2rem;
   font-weight: 550;
+}
+
+.saved-rest-name a {
+  text-decoration: none;
+  color: #2d333f;
 }
 
 .saved-info-bottom {
