@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Review } = require('../../db/models')
+const { Review, User } = require('../../db/models')
 const router = express.Router();
 
 // Get the reviews for one restaurant
@@ -11,7 +11,8 @@ router.get('/:restId', asyncHandler(async (req, res) => {
   const reviews = await Review.findAll({
     where: {
       restaurantId
-    }
+    },
+    include: User
   })
   // order the reviews by date here (newest first)
 
@@ -21,7 +22,6 @@ router.get('/:restId', asyncHandler(async (req, res) => {
 
 // post a new review
 router.post('/', asyncHandler(async (req, res) => {
-  console.log('===MADE IT TO THE BACK END=== ', req.body)
   const posted = await Review.create(req.body);
   return res.json(posted)
 }))

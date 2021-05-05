@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 import './ReviewBlock.css';
@@ -13,7 +13,11 @@ const ReviewBlock = ({ review }) => {
   const color = colors[colorIndex]
 
   // get the user's name that made the review
-
+  useEffect(() => {
+    if (review && review?.User) {
+      setReviewer(review.User)
+    }
+  }, [review])
 
   // update to have the same number of reviews for a user
   const numReviews = Math.floor(Math.random() * 20) + 2
