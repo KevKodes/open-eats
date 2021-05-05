@@ -19,4 +19,11 @@ router.get('/:restId', asyncHandler(async (req, res) => {
   return res.json(reviews)
 }))
 
+// post a new review
+router.post('/', asyncHandler(async (req, res) => {
+  console.log('===MADE IT TO THE BACK END=== ', req.body)
+  const posted = await Review.create(req.body);
+  return res.json(posted)
+}))
+
 module.exports = router;

@@ -1,0 +1,83 @@
+.review-modal-wrapper {
+  margin: 32px;
+}
+
+.review-modal-wrapper h1 {
+  text-align: center;
+  font-size: 36px;
+  border-bottom: 1px solid #d8d9db;
+  padding-bottom: 8px;
+}
+
+.review-modal-wrapper form {
+  width: 500px;
+}
+
+.form-ratings {
+  max-width: 70%;
+}
+
+.rating-form-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating-form-section h3 {
+  font-weight: 300;
+}
+
+.DefaultStarComponent {
+  font-size: 24px;
+}
+
+.StarPicker .selected {
+  color: #da3743;
+}
+
+.StarPicker .selected {
+  color: #da3743;
+}
+
+.StarPicker .addSelection {
+  color: #da3743;
+  opacity: 0.4;
+}
+
+.review-description {
+  width: 96%;
+  height: 125px;
+  padding: 8px;
+  margin: 16px 0;
+}
+
+.review-form-button {
+  background-color: #da3743;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: .875rem 1.75rem .9375rem;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  outline: 0;
+  transition: background-color 300ms ease-out;
+  cursor: pointer;
+  border-color: #b8222d;
+  border-width: 0;
+  width: 100%;
+  margin: 0.7rem 0;
+}
+
+.review-form-button:hover {
+  background-color: #b8222d;
+  color: #fff;
+}
+
+.review-form-errors {
+  color:#da3743;
+}
+
+.review-form-errors li {
+  list-style-type: none;
+}

@@ -1,8 +1,16 @@
+import { csrfFetch } from "./csrf";
+
 const LOAD = 'reviews/LOAD';
+const POST_ONE = 'reviews/POST_ONE'
 
 const load = reviews => ({
   type: LOAD,
   reviews
+})
+
+const post = review => ({
+  type: POST_ONE,
+  review
 })
 
 export const getReviews = restId => async (dispatch) => {
@@ -11,6 +19,22 @@ export const getReviews = restId => async (dispatch) => {
   if (response.ok) {
     const reviewList = await response.json();
     dispatch(load(reviewList));
+  }
+}
+
+export const postReview = review => async (dispatch) => {
+  const res = await csrfFetch(`/api/reviews`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  })
+
+  if (res.ok) {
+    const postedReview = await res.json();
+    console.log('posted review back in the thunk: ', postedReview)
+    dispatch(post(postedReview))
   }
 }
 
@@ -26,6 +50,14 @@ const reviewsReducer = (state = initialState, action) => {
         ...state,
         restaurantReviews: restReviews
       }
+    }
+    case POST_ONE: {
+      const updatedReviews = [action.review, ...state.restaurantReviews]
+      const addedRes = {
+        ...state,
+        restaurantReviews: updatedReviews
+      }
+      return addedRes
     }
     default:
       return state;

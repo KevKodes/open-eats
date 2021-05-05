@@ -6,7 +6,6 @@ import ReservationForm from './ReservationForm';
 import RestaurantContent from './RestaurantContent';
 import { saveFavorite } from '../../store/favorites'
 import { getFavorites } from '../../store/favorites'
-import Reviews from './Reviews';
 import './RestaurantPage.css';
 
 export default function RestaurantPage() {
