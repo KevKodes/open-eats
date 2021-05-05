@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
+import { postReview } from '../../store/reviews';
 import StarPicker from 'react-star-picker';
 import './ReviewForm.css';
 
 export default function Reviewform() {
+  const dispatch = useDispatch();
   const { restaurantId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const [overviewRating, setOverviewRating] = useState(null)
+  const [overallRating, setOverallRating] = useState(null)
   const [serviceRating, setServiceRating] = useState(null)
   const [foodRating, setFoodRating] = useState(null)
   const [ambienceRating, setAmbienceRating] = useState(null)
@@ -16,23 +18,22 @@ export default function Reviewform() {
 
   useEffect(() => {
     setErrors([])
-  }, [overviewRating, serviceRating, foodRating, ambienceRating])
+  }, [overallRating, serviceRating, foodRating, ambienceRating])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // need the userId and the restaurantId
     const review = {
-      overall: overviewRating,
-      food: foodRating,
-      service: serviceRating,
-      ambience: ambienceRating
+      overallRating,
+      foodRating,
+      serviceRating,
+      ambienceRating
     }
-    // console.log('review: ', review)
+
 
     let checkErrors = [];
     Object.keys(review).forEach(key => {
       if (!review[key]) {
-        checkErrors.push(`Please add a rating for the "${key}" category`)
+        checkErrors.push(`Please add a rating for the "${key.slice(0, -6)}" category`)
       }
     })
 
@@ -43,7 +44,8 @@ export default function Reviewform() {
       review.description = description;
       review.userId = sessionUser.id;
       review.restaurantId = restaurantId;
-      console.log('dispatch review post: ', review)
+      console.log('dispatched review post: ', review)
+      dispatch(postReview(review));
 
       // return <Redirect to={`/restaurants/${restaurantId}`} />;
     }
@@ -57,8 +59,8 @@ export default function Reviewform() {
           <div className="rating-form-section">
             <h3>Overall</h3>
             <StarPicker
-              onChange={value => setOverviewRating(value)}
-              value={overviewRating}
+              onChange={value => setOverallRating(value)}
+              value={overallRating}
               numberStars={5}
             />
           </div>

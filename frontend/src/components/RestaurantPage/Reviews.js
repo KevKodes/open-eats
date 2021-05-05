@@ -12,7 +12,6 @@ export default function Reviews() {
   const [foodRating, setFoodRating] = useState(0)
   const [serviceRating, setServiceRating] = useState(0)
   const [ambienceRating, setAmbienceRating] = useState(0)
-  // console.log('reviews returned to the component: ', reviews)
 
   useEffect(() => {
     if (reviews?.length) {
