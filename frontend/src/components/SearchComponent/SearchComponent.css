@@ -53,7 +53,7 @@
 .date-section .react-datepicker-wrapper {
   display: flex;
   width: 135px;
-  height: 40px;
+  /* height: 40px; */
 }
 
 .date-section .react-datepicker__input-container {
