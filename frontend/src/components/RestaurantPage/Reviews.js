@@ -88,7 +88,7 @@ export default function Reviews() {
           </div>
         </div>
       ) : (
-        <h3 className="review-header-bottom">Be the first to review this restaurant!</h3>
+        <h3 className="no-reviews-note">Be the first to review this restaurant!</h3>
       )}
         <div className="review-header-bottom">
           <ReviewFormModal />

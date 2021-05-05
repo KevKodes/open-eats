@@ -53,6 +53,12 @@
   padding-bottom: 64px;
 }
 
+.no-reviews-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .add-review button {
   border: 1px solid #d8d9db;
   border-radius: 2px;
