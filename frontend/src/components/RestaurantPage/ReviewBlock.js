@@ -22,6 +22,14 @@ const ReviewBlock = ({ review }) => {
   // update to have the same number of reviews for a user
   const numReviews = Math.floor(Math.random() * 20) + 2
 
+  const editReview = (e) => {
+    console.log('edit')
+  }
+
+  const deleteReview = (e) => {
+    console.log('delete')
+  }
+
   return (
     <div className="review-block-wrapper">
       <div className="review-block-header">
@@ -50,6 +58,22 @@ const ReviewBlock = ({ review }) => {
               starSpacing="2px"
               name='rating'
             />
+            { sessionUser.id === reviewer.id && (
+              <div className="review-changes">
+                <div className="review-edit">
+                  <button onClick={deleteReview}>
+                    Delete
+                    <i className="far fa-trash-alt"></i>
+                  </button>
+                </div>
+                <div className="review-delete">
+                  <button onClick={editReview}>
+                    Edit
+                    <i className="fas fa-edit"></i>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
           <div className="rating-line">
             <div className="rating-line-section">
