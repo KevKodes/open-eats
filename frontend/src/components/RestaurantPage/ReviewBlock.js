@@ -24,12 +24,12 @@ const ReviewBlock = ({ review }) => {
   // update to have the same number of reviews for a user
   const numReviews = Math.floor(Math.random() * 20) + 2
 
-  const handleEditReview = (e) => {
-    console.log('edit')
+  const handleEditReview = async (updatedReview) => {
+    console.log('edit review id: ', updatedReview.id)
+    await dispatch(editReview(updatedReview))
   }
 
   const handleDeleteReview = async (e) => {
-    console.log('delete review id: ', review.id)
     await dispatch(deleteReview(review.id))
   }
 

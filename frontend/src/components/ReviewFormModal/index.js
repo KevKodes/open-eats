@@ -14,6 +14,7 @@ export default function ReviewFormModal() {
     setErrors([])
   }, [sessionUser])
 
+  // close the modal when a review is added or edited
   useEffect(() => {
     setShowModal(false)
   }, [reviews])
