@@ -1,7 +1,9 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'reviews/LOAD';
-const POST_ONE = 'reviews/POST_ONE'
+const POST_ONE = 'reviews/POST_ONE';
+const EDIT = 'reviews/EDIT';
+const DELETE = 'reviews/DELETE';
 
 const load = reviews => ({
   type: LOAD,
@@ -11,6 +13,11 @@ const load = reviews => ({
 const post = review => ({
   type: POST_ONE,
   review
+})
+
+const deleteRev = reviewId => ({
+  type: DELETE,
+  reviewId
 })
 
 export const getReviews = restId => async (dispatch) => {
@@ -38,6 +45,20 @@ export const postReview = review => async (dispatch) => {
   }
 }
 
+export const deleteReview = reviewId => async (dispatch) => {
+  const res = await csrfFetch(`/api/reviews/${reviewId}`, {
+    method: 'DELETE'
+  })
+
+  if (res.ok) {
+    dispatch(deleteRev(reviewId))
+  }
+}
+
+export const editReview = review => async (dispatch) => {
+  console.log('the review to edit in the thunk is: ', review)
+}
+
 const initialState = {}
 const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -58,6 +79,15 @@ const reviewsReducer = (state = initialState, action) => {
         restaurantReviews: updatedReviews
       }
       return addedRes
+    }
+    case DELETE: {
+      const updatedReviews = [...state.restaurantReviews].filter(review => {
+        return parseInt(review.id) !== parseInt(action.reviewId)
+      })
+      return {
+        ...state,
+        restaurantReviews: [...updatedReviews]
+      }
     }
     default:
       return state;

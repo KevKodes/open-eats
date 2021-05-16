@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StarRatings from 'react-star-ratings';
+import { deleteReview, editReview } from '../../store/reviews';
 import './ReviewBlock.css';
 
 const ReviewBlock = ({ review }) => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session?.user);
   const [reviewer, setReviewer] = useState({ firstName: 'Kevin', lastName: 'Pitzer'})
 
@@ -22,12 +24,13 @@ const ReviewBlock = ({ review }) => {
   // update to have the same number of reviews for a user
   const numReviews = Math.floor(Math.random() * 20) + 2
 
-  const editReview = (e) => {
+  const handleEditReview = (e) => {
     console.log('edit')
   }
 
-  const deleteReview = (e) => {
-    console.log('delete')
+  const handleDeleteReview = async (e) => {
+    console.log('delete review id: ', review.id)
+    await dispatch(deleteReview(review.id))
   }
 
   return (
@@ -61,13 +64,13 @@ const ReviewBlock = ({ review }) => {
             { sessionUser.id === reviewer.id && (
               <div className="review-changes">
                 <div className="review-edit">
-                  <button onClick={deleteReview}>
+                  <button onClick={handleDeleteReview}>
                     Delete
                     <i className="far fa-trash-alt"></i>
                   </button>
                 </div>
                 <div className="review-delete">
-                  <button onClick={editReview}>
+                  <button onClick={handleEditReview}>
                     Edit
                     <i className="fas fa-edit"></i>
                   </button>
