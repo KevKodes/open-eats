@@ -87,7 +87,7 @@ const ReviewBlock = ({ review }) => {
                   </button>
                   {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                      <ReviewForm />
+                      <ReviewForm oldReview={review} />
                     </Modal>
                   )}
                 </div>

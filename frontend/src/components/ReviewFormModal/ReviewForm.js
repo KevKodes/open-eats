@@ -5,7 +5,7 @@ import { postReview } from '../../store/reviews';
 import StarPicker from 'react-star-picker';
 import './ReviewForm.css';
 
-export default function Reviewform() {
+export default function Reviewform({ oldReview }) {
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
@@ -15,10 +15,22 @@ export default function Reviewform() {
   const [ambienceRating, setAmbienceRating] = useState(null)
   const [description, setDescription] = useState('')
   const [errors, setErrors] = useState([])
+  console.log('the review to edit is: ', oldReview)
 
   useEffect(() => {
     setErrors([])
   }, [overallRating, serviceRating, foodRating, ambienceRating])
+
+  // set the default values if there is a review passed down for editing
+  useEffect(() => {
+    if (oldReview) {
+      setOverallRating(oldReview.overallRating);
+      setAmbienceRating(oldReview.ambienceRating);
+      setServiceRating(oldReview.serviceRating);
+      setFoodRating(oldReview.foodRating);
+      setDescription(oldReview.description);
+    }
+  }, [oldReview])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -93,6 +105,7 @@ export default function Reviewform() {
           className="review-description"
           name="description"
           onChange={(e) => setDescription(e.target.value)}
+          value={description}
           placeholder="How was your dining experience? (Optional)"  
         />
         <ul className='review-form-errors'>
