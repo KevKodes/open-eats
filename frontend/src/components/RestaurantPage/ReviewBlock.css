@@ -47,10 +47,47 @@
 
 .review-block-content {
   margin-left: 16px;
+  min-width: 529px;
 }
 
 .stars-line {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-changes {
+  display: flex;
+  flex-direction: row;
+}
+
+.review-delete {
+  margin-left: 16px;
+}
+
+.review-changes i {
+  margin-left: 8px;
+}
+
+.review-changes button {
+  background-color: white;
+  color: black;
+  font-weight: 300;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #d8d9db;
+  width: 100%;
+  margin: 1px;
+}
+
+.review-changes button:hover {
+  border: 2px solid #DA3743;
+  margin: 0;
+  cursor: pointer;
 }
 
 .rating-line {
