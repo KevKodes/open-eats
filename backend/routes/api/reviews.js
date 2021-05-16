@@ -23,4 +23,17 @@ router.post('/', asyncHandler(async (req, res) => {
   return res.json(posted)
 }))
 
+// delete a review
+router.delete('/:reviewId', asyncHandler(async (req, res) => {
+  const reviewId = req.params.reviewId;
+
+  const revId = await Review.destroy({
+    where: {
+      id: reviewId
+    }
+  })
+
+  return res.status(200).json({ status: "ok" })
+}))
+
 module.exports = router;
