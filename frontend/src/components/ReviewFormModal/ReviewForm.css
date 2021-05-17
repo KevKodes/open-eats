@@ -31,9 +31,13 @@
   font-size: 24px;
 }
 
-.StarPicker .selected {
+.StarPicker .selected,
+.DefaultStarComponent .selected,
+.DefaultStartComponent .addSelection {
   color: #da3743;
 }
+
+
 
 .StarPicker .selected {
   color: #da3743;
