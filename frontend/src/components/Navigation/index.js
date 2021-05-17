@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
 		sessionLinks = (
 			<div className="user-buttons">
 				<ProfileButton user={sessionUser} />
-				<ReservationsButton />
+				{/* <ReservationsButton /> */}
 				{/* <NotificationsButton /> */}
 			</div>
 		);
