@@ -58,10 +58,7 @@ export default function Reviewform({ oldReview }) {
       review.description = description;
       review.userId = sessionUser.id;
       review.restaurantId = restaurantId;
-      // console.log('dispatched review post: ', review)
       dispatch(postReview(review));
-
-      // return <Redirect to={`/restaurants/${restaurantId}`} />;
     }
   }
 
