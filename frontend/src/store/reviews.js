@@ -45,7 +45,6 @@ export const postReview = review => async (dispatch) => {
 
   if (res.ok) {
     const postedReview = await res.json();
-    // console.log('posted review back in the thunk: ', postedReview)
     dispatch(post(postedReview))
   }
 }
@@ -61,7 +60,6 @@ export const deleteReview = reviewId => async (dispatch) => {
 }
 
 export const editReview = review => async (dispatch) => {
-  // console.log('the review to edit in the thunk is: ', review)
   const res = await csrfFetch('/api/reviews/', {
     method: 'PATCH',
     headers: {
@@ -107,11 +105,11 @@ const reviewsReducer = (state = initialState, action) => {
       }
     }
     case EDIT: {
-      console.log('updating the state: ', action.review);
-      const updatedReviews = [action.review,
-        ...state.restaurantReviews.filter(rev => {
-          return parseInt(rev.id) !== parseInt(action.review.id)
-      })]
+      const updatedReviews = [...state.restaurantReviews];
+      const revIdx = updatedReviews.findIndex(rev => (
+        parseInt(rev.id) === parseInt(action.review.id)
+      ))
+      updatedReviews[revIdx] = action.review;
       return {
         ...state,
         restaurantReviews: [...updatedReviews]

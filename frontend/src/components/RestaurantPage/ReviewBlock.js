@@ -34,10 +34,7 @@ const ReviewBlock = ({ review }) => {
   const numReviews = Math.floor(Math.random() * 20) + 2
 
   const handleEditReview = () => {
-    console.log('edit review id: ', review.id)
-    // setErrors([])
     setShowModal(true)
-    // await dispatch(editReview(updatedReview))
   }
 
   const handleDeleteReview = async (e) => {
