@@ -71,7 +71,7 @@ export const editReview = review => async (dispatch) => {
   })
 
   if (res.ok) {
-    const updatedReview = res.json();
+    const updatedReview = await res.json();
     dispatch(editRev(updatedReview));
   }
 }
@@ -108,8 +108,13 @@ const reviewsReducer = (state = initialState, action) => {
     }
     case EDIT: {
       console.log('updating the state: ', action.review);
+      const updatedReviews = [action.review,
+        ...state.restaurantReviews.filter(rev => {
+          return parseInt(rev.id) !== parseInt(action.review.id)
+      })]
       return {
-        ...state
+        ...state,
+        restaurantReviews: [...updatedReviews]
       }
     }
     default:
