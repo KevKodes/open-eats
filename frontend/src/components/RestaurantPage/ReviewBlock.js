@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import StarRatings from 'react-star-ratings';
 import { deleteReview, editReview } from '../../store/reviews';
+import { Modal } from '../../context/Modal';
+import ReviewForm from '../ReviewFormModal/ReviewForm';
 import './ReviewBlock.css';
 
 const ReviewBlock = ({ review }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session?.user);
+  const reviews = useSelector(state => state.reviews?.restaurantReviews);
   const [reviewer, setReviewer] = useState({ firstName: 'Kevin', lastName: 'Pitzer'})
+  const [showModal, setShowModal] = useState(false);
 
   // randomized colors for the initials
   const colors = ['#BB6ACD', '#D86441', '#Df4E96', '#6C8AE4']
@@ -21,15 +25,22 @@ const ReviewBlock = ({ review }) => {
     }
   }, [review])
 
+  // close the modal when a review is edited
+  useEffect(() => {
+    setShowModal(false)
+  }, [reviews])
+
   // update to have the same number of reviews for a user
   const numReviews = Math.floor(Math.random() * 20) + 2
 
-  const handleEditReview = (e) => {
-    console.log('edit')
+  const handleEditReview = () => {
+    console.log('edit review id: ', review.id)
+    // setErrors([])
+    setShowModal(true)
+    // await dispatch(editReview(updatedReview))
   }
 
   const handleDeleteReview = async (e) => {
-    console.log('delete review id: ', review.id)
     await dispatch(deleteReview(review.id))
   }
 
@@ -74,6 +85,11 @@ const ReviewBlock = ({ review }) => {
                     Edit
                     <i className="fas fa-edit"></i>
                   </button>
+                  {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                      <ReviewForm oldReview={review} />
+                    </Modal>
+                  )}
                 </div>
               </div>
             )}

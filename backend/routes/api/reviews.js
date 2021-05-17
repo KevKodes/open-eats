@@ -36,4 +36,25 @@ router.delete('/:reviewId', asyncHandler(async (req, res) => {
   return res.status(200).json({ status: "ok" })
 }))
 
+// edit a review (patch)
+router.patch('/', asyncHandler(async (req, res) => {
+  console.log('update this mofo: ', req.body)
+  const { id, 
+    overallRating, 
+    foodRating, 
+    serviceRating, 
+    ambienceRating, 
+    description } = req.body;
+  const review = await Review.findByPk(id)
+  await review.update({
+    overallRating,
+    foodRating,
+    serviceRating,
+    ambienceRating,
+    description
+  })
+  return res.json(review);
+}))
+
+
 module.exports = router;

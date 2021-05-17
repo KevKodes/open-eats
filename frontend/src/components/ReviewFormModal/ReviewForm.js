@@ -1,24 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
-import { postReview } from '../../store/reviews';
+import { postReview, editReview } from '../../store/reviews';
 import StarPicker from 'react-star-picker';
 import './ReviewForm.css';
 
-export default function Reviewform() {
+export default function Reviewform({ oldReview }) {
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const [overallRating, setOverallRating] = useState(null)
-  const [serviceRating, setServiceRating] = useState(null)
-  const [foodRating, setFoodRating] = useState(null)
-  const [ambienceRating, setAmbienceRating] = useState(null)
-  const [description, setDescription] = useState('')
+  const [overallRating, setOverallRating] = useState(null);
+  const [serviceRating, setServiceRating] = useState(null);
+  const [foodRating, setFoodRating] = useState(null);
+  const [ambienceRating, setAmbienceRating] = useState(null);
+  const [description, setDescription] = useState('');
+  const [editBool, setEditBool] = useState(false);
   const [errors, setErrors] = useState([])
+  console.log('the review to edit is: ', oldReview)
 
   useEffect(() => {
     setErrors([])
   }, [overallRating, serviceRating, foodRating, ambienceRating])
+
+  // set the default values if there is a review passed down for editing
+  useEffect(() => {
+    if (oldReview) {
+      setOverallRating(oldReview.overallRating);
+      setAmbienceRating(oldReview.ambienceRating);
+      setServiceRating(oldReview.serviceRating);
+      setFoodRating(oldReview.foodRating);
+      setDescription(oldReview.description);
+      setEditBool(true);
+    }
+  }, [oldReview])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,11 +58,24 @@ export default function Reviewform() {
       review.description = description;
       review.userId = sessionUser.id;
       review.restaurantId = restaurantId;
-      console.log('dispatched review post: ', review)
+      // console.log('dispatched review post: ', review)
       dispatch(postReview(review));
 
       // return <Redirect to={`/restaurants/${restaurantId}`} />;
     }
+  }
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+    const review = {
+      id: oldReview.id,
+      overallRating,
+      foodRating,
+      serviceRating,
+      ambienceRating,
+      description
+    }
+    dispatch(editReview(review))
   }
 
   return (
@@ -93,6 +120,7 @@ export default function Reviewform() {
           className="review-description"
           name="description"
           onChange={(e) => setDescription(e.target.value)}
+          value={description}
           placeholder="How was your dining experience? (Optional)"  
         />
         <ul className='review-form-errors'>
@@ -100,7 +128,22 @@ export default function Reviewform() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <button className="review-form-button" onClick={handleSubmit}>Submit</button>
+        { editBool ? (
+          <div className="edit-review-buttons">
+            <button
+              className="review-form-button"
+              onClick={handleEdit}
+            >Edit Review</button>
+            {/* <button
+              className="review-cancel-button"
+              onClick={setShowModal(false)}
+            >Cancel</button> */}
+          </div>
+        ) : (
+          <>
+            <button className="review-form-button" onClick={handleSubmit}>Submit</button>
+          </>
+        )}
       </form>
     </div>
   )

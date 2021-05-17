@@ -8,13 +8,13 @@ export default function ReviewFormModal() {
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([])
   const sessionUser = useSelector(state => state.session?.user);
-  const reviews = useSelector(state => state.reviews?.restaurantReviews)
+  const reviews = useSelector(state => state.reviews?.restaurantReviews);
 
   useEffect(() => {
     setErrors([])
   }, [sessionUser])
 
-  // close the modal when a review is added or edited
+  // close the modal when a review is added
   useEffect(() => {
     setShowModal(false)
   }, [reviews])
