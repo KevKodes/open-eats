@@ -12,8 +12,6 @@ const ReviewBlock = ({ review }) => {
   const reviews = useSelector(state => state.reviews?.restaurantReviews);
   const [reviewer, setReviewer] = useState({ firstName: 'Kevin', lastName: 'Pitzer'})
   const [showModal, setShowModal] = useState(false);
-  console.log('heres the review: ', review)
-  console.log('the reviewer is: ', reviewer)
 
   // randomized colors for the initials
   const colors = ['#BB6ACD', '#D86441', '#Df4E96', '#6C8AE4']
