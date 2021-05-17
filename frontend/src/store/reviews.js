@@ -45,7 +45,6 @@ export const postReview = review => async (dispatch) => {
 
   if (res.ok) {
     const postedReview = await res.json();
-    // console.log('posted review back in the thunk: ', postedReview)
     dispatch(post(postedReview))
   }
 }
@@ -106,11 +105,11 @@ const reviewsReducer = (state = initialState, action) => {
       }
     }
     case EDIT: {
-      // console.log('updating the state: ', action.review);
-      const updatedReviews = [action.review,
-        ...state.restaurantReviews.filter(rev => {
-          return parseInt(rev.id) !== parseInt(action.review.id)
-      })]
+      const updatedReviews = [...state.restaurantReviews];
+      const revIdx = updatedReviews.findIndex(rev => (
+        parseInt(rev.id) === parseInt(action.review.id)
+      ))
+      updatedReviews[revIdx] = action.review;
       return {
         ...state,
         restaurantReviews: [...updatedReviews]

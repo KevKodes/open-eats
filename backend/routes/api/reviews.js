@@ -39,7 +39,6 @@ router.delete('/:reviewId', asyncHandler(async (req, res) => {
 
 // edit a review (patch)
 router.patch('/', asyncHandler(async (req, res) => {
-  console.log('update this mofo: ', req.body)
   const { id, 
     overallRating, 
     foodRating, 
