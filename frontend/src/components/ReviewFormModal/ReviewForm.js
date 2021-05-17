@@ -16,7 +16,6 @@ export default function Reviewform({ oldReview }) {
   const [description, setDescription] = useState('');
   const [editBool, setEditBool] = useState(false);
   const [errors, setErrors] = useState([])
-  console.log('the review to edit is: ', oldReview)
 
   useEffect(() => {
     setErrors([])
