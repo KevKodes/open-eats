@@ -21,7 +21,13 @@ router.get('/:restId', asyncHandler(async (req, res) => {
 // post a new review
 router.post('/', asyncHandler(async (req, res) => {
   const posted = await Review.create(req.body);
-  return res.json(posted)
+  const newReview = await Review.findOne({
+    where: {
+      id: posted.id
+    },
+    include: User
+  })
+  return res.json(newReview)
 }))
 
 // delete a review
