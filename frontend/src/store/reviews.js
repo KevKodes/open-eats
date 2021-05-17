@@ -20,6 +20,11 @@ const deleteRev = reviewId => ({
   reviewId
 })
 
+const editRev = review => ({
+  type: EDIT,
+  review
+})
+
 export const getReviews = restId => async (dispatch) => {
   const response = await fetch(`/api/reviews/${restId}`)
   
@@ -40,7 +45,7 @@ export const postReview = review => async (dispatch) => {
 
   if (res.ok) {
     const postedReview = await res.json();
-    console.log('posted review back in the thunk: ', postedReview)
+    // console.log('posted review back in the thunk: ', postedReview)
     dispatch(post(postedReview))
   }
 }
@@ -56,7 +61,19 @@ export const deleteReview = reviewId => async (dispatch) => {
 }
 
 export const editReview = review => async (dispatch) => {
-  console.log('the review to edit in the thunk is: ', review)
+  // console.log('the review to edit in the thunk is: ', review)
+  const res = await csrfFetch('/api/reviews/', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  })
+
+  if (res.ok) {
+    const updatedReview = res.json();
+    dispatch(editRev(updatedReview));
+  }
 }
 
 const initialState = {}
@@ -87,6 +104,12 @@ const reviewsReducer = (state = initialState, action) => {
       return {
         ...state,
         restaurantReviews: [...updatedReviews]
+      }
+    }
+    case EDIT: {
+      console.log('updating the state: ', action.review);
+      return {
+        ...state
       }
     }
     default:
