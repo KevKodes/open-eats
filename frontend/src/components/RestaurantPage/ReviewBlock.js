@@ -69,7 +69,7 @@ const ReviewBlock = ({ review }) => {
               starSpacing="2px"
               name='rating'
             />
-            { sessionUser.id === reviewer.id && (
+            { sessionUser?.id === reviewer.id && (
               <div className="review-changes">
                 <div className="review-edit">
                   <button onClick={handleDeleteReview}>
