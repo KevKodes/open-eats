@@ -1,6 +1,6 @@
 <h1 align="center">OpenEats</h1>
 
-<p align="center">See our site hosted on heroku
+<p align="center">See my site hosted on heroku
 <br><a href="https://openeats-app.herokuapp.com/">OpenEats</a></br></p>
 &nbsp
 
