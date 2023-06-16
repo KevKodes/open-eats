@@ -1,7 +1,7 @@
 <h1 align="center">OpenEats</h1>
 
-<p align="center">See my site hosted on heroku
-<br><a href="https://openeats-app.herokuapp.com/">OpenEats</a></br></p>
+<p align="center">See my live site
+<br><a href="https://openeats.kevinpitzer.com/">OpenEats</a></br></p>
 &nbsp
 
 ## About
