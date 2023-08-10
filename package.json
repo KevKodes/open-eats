@@ -24,9 +24,5 @@
   "homepage": "https://github.com/KevKodes/authenticate-me#readme",
   "dependencies": {
     "postgresql": "0.0.1"
-  },
-  "engines": {
-    "npm": "9.6.7",
-    "node": ">=19.0.0 <20.3.0"
   }
 }
